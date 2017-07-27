@@ -5,70 +5,57 @@
       <nav-header></nav-header>
       <div class="under">
         <ul class="under-left">
-          <li>
+          <li @click="toPage('/gene')">
             <div class="father">
               <span class="img task-gene"></span>
               <span>基因</span>
               <i class="triangle"></i>
-              <img src="../static/img/under-left-1.png" alt="">
             </div>
           </li>
+          <!--<li @click="toPage('/illness')">-->
+            <!--<div class="father">-->
+              <!--<span class="img task-illness"></span>-->
+              <!--<span>疾病</span>-->
+              <!--<i class="triangle"></i>-->
+            <!--</div>-->
+          <!--</li>-->
           <li>
             <div class="father">
-              <span class="img task-automate"></span>
-              <span>疾病</span>
-              <i class="triangle"></i>
-              <img src="../static/img/under-left-1.png" alt="">
-            </div>
-          </li>
-          <li>
-            <div class="father">
-              <span class="img task-automate"></span>
+              <span class="img task-product"></span>
               <span>产品</span>
               <i class="triangle"></i>
               <img src="../static/img/under-left-1.png" alt="">
             </div>
+            <div @click.stop="" class="children">
+              <router-link to="/taskM/foo/reportSe" data-code='taskM-reportSe' class="block">
+                在线报告查询
+              </router-link>
+              <router-link to='/taskM/foo/reportSt' data-code="taskM-reportSt" class="block">
+                报告统计
+              </router-link>
+            </div>
           </li>
-          <li>
+          <li @click="toPage('/genotype')">
             <div class="father">
-              <span class="img task-automate"></span>
+              <span class="img task-genotype"></span>
               <span>表型分析</span>
               <i class="triangle"></i>
-              <img src="../static/img/under-left-1.png" alt="">
             </div>
           </li>
-          <li>
+          <li @click="toHpo" data-name="hpo">
             <div class="father">
-              <span class="img task-automate"></span>
+              <span class="img task-hpo"></span>
               <span>HPOBOX</span>
               <i class="triangle"></i>
-              <img src="../static/img/under-left-1.png" alt="">
             </div>
           </li>
-          <li>
+          <li @click="toPage('/variation')">
             <div class="father">
-              <span class="img task-automate"></span>
+              <span class="img task-variation"></span>
               <span>变异</span>
               <i class="triangle"></i>
-              <img src="../static/img/under-left-1.png" alt="">
             </div>
           </li>
-          <!--<li>-->
-            <!--<div class="father">-->
-              <!--<span class="img task-automate"></span>-->
-              <!--<span>自动化报告</span>-->
-              <!--<i class="triangle"></i>-->
-              <!--<img src="../static/img/under-left-1.png" alt="">-->
-            <!--</div>-->
-            <!--<div @click.stop="" class="children">-->
-              <!--<router-link to="/taskM/foo/reportSe" data-code='taskM-reportSe' class="block">-->
-                <!--在线报告查询-->
-              <!--</router-link>-->
-              <!--<router-link to='/taskM/foo/reportSt' data-code="taskM-reportSt" class="block">-->
-                <!--报告统计-->
-              <!--</router-link>-->
-            <!--</div>-->
-          <!--</li>-->
         </ul>
         <div class="under-right">
           <router-view></router-view>
@@ -81,7 +68,7 @@
 <script>
 
   import header from './components/global/Header.vue'
-  import Vue from  'vue'
+  import Vue from 'vue'
   import axios from 'axios'
 
   Vue.component('loading', {
@@ -103,27 +90,38 @@
         inGene: ''
       }
     },
-    created: function () {
-      this.baseBind();
-    },
+//    created: function () {
+//      this.baseBind();
+//    },
     mounted: function () {
       this.baseBind()
     },
-    updated:function () {
+    updated: function () {
       this.baseBind()
     },
     watch: {
-      '$route' (to, from) { //路由变化的时候判断需不需要加载头部
+      '$route'(to, from) { //路由变化的时候判断需不需要加载头部
         if (from.name === 'login') {  //重新登录之后token不刷新
           this.myAxios.headers = {'Authorization': localStorage.token};
         }
       }
     },
     methods: {
+      //左侧导航hpo的处理逻辑
+      hpoLogic:function () {
+
+      },
+      //hpo结束
+      toPage:function (pagePath) {
+        this.$router.push({path: ''+pagePath})
+      },
+      toHpo: function () {
+        window.open('http://chinahpo.org')
+      },
       baseBind: function () {
-        if(this.$route.name == 'login'){
+        if (this.$route.name == 'login') {
           this.inLogin = true;
-        }else{
+        } else {
           this.inLogin = false;
         }
         /*点击tr加背景色*/
@@ -138,26 +136,28 @@
           }
         });
         /*点击左侧列表*/
-        $(".under-left").off('click').on('click','>li',function (event) {
+        $(".under-left").off('click').on('click', '>li', function (event) {
+          if($(this).data('name') == 'hpo'){
+            return;
+          }
           const _currentLi = $(event.target).closest('li');
           const _children = _currentLi.find('.children');
-          if(_currentLi.hasClass('active')){
+          if (_currentLi.hasClass('active')) {
             _currentLi.removeClass('active')
-          }else{
-//            $(".under-left").find("li.active").removeClass('active');
+          } else {
             _currentLi.addClass('active');
           }
         });
         /*自定义的上传输入框*/
-        $(".upload-content").on("click",'.text',function () {
+        $(".upload-content").on("click", '.text', function () {
           $(this).next().click();
         });
-        $(".upload-content").on('change','.hide-input',function () {
+        $(".upload-content").on('change', '.hide-input', function () {
           const arr = $(this).val().split("\\");
-          $(this).parent().find('.show-name').val(arr[arr.length-1])
+          $(this).parent().find('.show-name').val(arr[arr.length - 1])
         });
         /*点击其它地方筛选关闭*/
-        $("#app:not('.filtrate-content')").on("click",function () {
+        $("#app:not('.filtrate-content')").on("click", function () {
           $('.filtrate-content').addClass('hide')
         })
       },
@@ -176,11 +176,11 @@
   @tdBorder: rgb(225, 226, 227);
   @trHover: rgb(255, 245, 231);
   @trIn: rgb(255, 236, 210);
-  @interleave:rgb(246,248,250);
-  @fliterBorder:rgb(212,212,212);
+  @interleave: rgb(246, 248, 250);
+  @fliterBorder: rgb(212, 212, 212);
   html {
     min-width: 1350px;
-    background:linear-gradient(to bottom,#f0f0f0,#ffffff);
+    background: linear-gradient(to bottom, #f0f0f0, #ffffff);
     min-height: 100%;
     width: 100%;
     margin: 0;
@@ -198,15 +198,15 @@
       #app {
         min-height: 100%;
         /*自定义class*/
-        .span-a{
+        .span-a {
           color: #337ab7;
           cursor: pointer;
-          &:hover{
+          &:hover {
             text-decoration: underline;
             color: #23527c;
           }
         }
-        .break-all{
+        .break-all {
           word-break: break-all;
         }
         .po {
@@ -218,24 +218,24 @@
         .block {
           display: block;
         }
-        .fr{
+        .fr {
           float: right;
         }
-        .fl{
+        .fl {
           float: left;
         }
-        .center{
+        .center {
           text-align: center;
         }
         a {
           text-decoration: none;
         }
-        .common-a{
-          &:hover{
+        .common-a {
+          &:hover {
             text-decoration: underline;
           }
         }
-        .bold{
+        .bold {
           font-weight: bold;
         }
         ul {
@@ -243,36 +243,38 @@
             list-style: none;
           }
         }
-        .rea{
+        .rea {
           position: relative;
         }
-        input,textarea{
+        input, textarea {
           border: 1px solid #d4d4d4;
           border-radius: 3px;
           padding: 1px 8px;
-          &:focus{
+          &:focus {
             outline: none;
           }
         }
-        select::-ms-expand { display: none; }
-        .my-select{
+        select::-ms-expand {
+          display: none;
+        }
+        .my-select {
           border: 1px solid #d4d4d4;
           border-radius: 3px;
           height: 24px;
           line-height: 24px;
           padding-left: 5px;
           padding-right: 24px;
-          appearance:none;
-          -moz-appearance:none;
-          -webkit-appearance:none;
-          -ms-appearance:none;
+          appearance: none;
+          -moz-appearance: none;
+          -webkit-appearance: none;
+          -ms-appearance: none;
           background: url(../static/img/select-right.png) no-repeat scroll right center transparent;
-          &:focus{
+          &:focus {
             outline: none;
           }
         }
 
-        .my-btn{
+        .my-btn {
           display: inline-block;
           width: 95px;
           height: 28px;
@@ -281,30 +283,30 @@
           border: 1px solid #df3a24;
           text-align: center;
           color: #fff;
-          background:linear-gradient(to bottom,#f46554,#ea533f);
+          background: linear-gradient(to bottom, #f46554, #ea533f);
           cursor: pointer;
-          img{
+          img {
             margin: -3px 5px 0 0;
           }
-          &:active{
-            background:linear-gradient(to bottom,#ea533f,#f46544);
+          &:active {
+            background: linear-gradient(to bottom, #ea533f, #f46544);
           }
         }
-        .upload-content{
+        .upload-content {
           display: inline-block;
           width: 50%;
           padding: 0;
-          .show-name{
+          .show-name {
             background-color: #fff;
             width: 78%;
             margin-right: -2%;
             padding-right: 2%;
             float: left;
-            &:focus{
+            &:focus {
               outline: none;
             }
           }
-          .text{
+          .text {
             cursor: pointer;
             border: 1px solid #d4d4d4;
             border-radius: 3px;
@@ -313,29 +315,29 @@
             height: 24px;
             line-height: 24px;
             text-align: center;
-            background-color: rgb(238,238,238);
+            background-color: rgb(238, 238, 238);
           }
-          .hide-input{
+          .hide-input {
             display: none;
           }
         }
 
-        .shadow{
+        .shadow {
           border: 1px solid @tableSha;
           border-radius: 5px;
           box-shadow: 0 0 10px 1px @tableSha;
         }
-        .shadow-top{
-          border-top: 5px solid rgb(0,118,192);
+        .shadow-top {
+          border-top: 5px solid rgb(0, 118, 192);
           border-radius: 5px;
           box-shadow: 0 0 10px 1px @tableSha;
         }
-        .bc-fff{
+        .bc-fff {
           background-color: #fff;
         }
         /*表格样式*/
-        table{
-          tr.interleave{
+        table {
+          tr.interleave {
             background-color: @interleave;
           }
         }
@@ -366,8 +368,8 @@
               th:not(:first-child) {
                 border-left: 1px dashed @tdBorder;
               }
-              th{
-                .img1 {  //th上面显示的图
+              th {
+                .img1 { //th上面显示的图
                   width: 29px;
                   height: 32px;
                   background: url(../static/img/th-2.png);
@@ -376,22 +378,22 @@
                   margin-bottom: -6px;
                   cursor: pointer;
                   position: relative;
-                  &:hover{
-                    .hide-content{
+                  &:hover {
+                    .hide-content {
                       display: block;
                     }
                   }
-                  .hide-content{
+                  .hide-content {
                     position: absolute;
                     top: 32px;
                     display: none;
-                    .img2{
+                    .img2 {
                       cursor: pointer;
                       background-color: transparent;
                       z-index: 11;
                       margin-left: 6px;
                     }
-                    ul{
+                    ul {
                       margin: -5px 0 0 -30px;
                       border: 1px solid @tableSha;
                       box-shadow: 0 0 10px 1px @tableSha;
@@ -400,10 +402,10 @@
                       background-color: #fff;
                       font-weight: normal;
                       cursor: pointer;
-                      li{
+                      li {
                         padding: 5px 20px;
-                        white-space:nowrap;
-                        &:hover{
+                        white-space: nowrap;
+                        &:hover {
                           background-color: @trIn;
                         }
                       }
@@ -441,7 +443,7 @@
           }
         }
         /*筛选框样式*/
-        .filtrate-content{
+        .filtrate-content {
           width: 290px;
           border: 1px solid @tableSha;
           border-radius: 5px;
@@ -452,36 +454,36 @@
           padding: 14px 14px 20px 14px;
           background-color: #fff;
           z-index: 10;
-          .up{
+          .up {
             position: absolute;
             right: 20px;
-            top:-9px;
+            top: -9px;
           }
-          .title{
+          .title {
             padding-bottom: 9px;
             border-bottom: 1px solid @fliterBorder;
           }
-          .content{
+          .content {
             padding-top: 6px;
-            .left{
+            .left {
               float: left;
               width: 70px;
             }
-            .right{
+            .right {
               float: left;
               width: 185px;
-              input{
+              input {
                 border: 1px solid @fliterBorder;
                 border-radius: 3px;
                 width: 100%;
               }
             }
-            .single{
+            .single {
               margin: 3px 0;
               min-height: 28px;
             }
           }
-          .search-btn{
+          .search-btn {
             margin-top: 20px;
             margin-left: 90px;
           }
@@ -501,7 +503,7 @@
               padding: 0;
               color: @color;
               background-color: #fff;
-              li{
+              li {
                 cursor: pointer;
               }
               li.active {
@@ -516,8 +518,23 @@
                   display: block;
                 }
                 /*左侧导航图标*/
-                .task-gene{
+                .task-gene {
                   background: url(../static/img/all-1.png) 18px 158px;
+                }
+                .task-illness {
+                  background: url(../static/img/all-1.png) 18px 133px;
+                }
+                .task-product {
+                  background: url(../static/img/all-1.png) 18px 105px;
+                }
+                .task-genotype {
+                  background: url(../static/img/all-1.png) 18px 80px;
+                }
+                .task-hpo {
+                  background: url(../static/img/all-1.png) 18px 52px;
+                }
+                .task-variation {
+                  background: url(../static/img/all-1.png) 18px 25px;
                 }
               }
               .father {
@@ -557,20 +574,34 @@
                   color: inherit;
                   padding-left: 23px;
                 }
-                a.active,a:hover,.router-link-active,.router-link-active:hover {
+                a.active, a:hover, .router-link-active, .router-link-active:hover {
                   color: @in;
                   background-color: @inBc;
                 }
               }
 
               /*左侧导航图标*/
-              .task-gene{
+              .task-gene {
                 background: url(../static/img/all-1.png) 0 158px;
               }
-
+              .task-illness {
+                background: url(../static/img/all-1.png) 0 133px;
+              }
+              .task-product {
+                background: url(../static/img/all-1.png) 0 105px;
+              }
+              .task-genotype {
+                background: url(../static/img/all-1.png) 0 80px;
+              }
+              .task-hpo {
+                background: url(../static/img/all-1.png) 0 52px;
+              }
+              .task-variation {
+                background: url(../static/img/all-1.png) 0 25px;
+              }
             }
             .under-right {
-              border-left: 1px solid rgb(211,212,212);
+              border-left: 1px solid rgb(211, 212, 212);
               display: inline-block;
               /*float: left;*/
               width: calc(~'100vw - 300px');

@@ -43,21 +43,16 @@
       }
     },
     mounted: function () {  //兼容刷新的时候
-      let currentName = this.$router.currentRoute.name;
-      const _ul = $("#pathUl");
-      _ul.find('.active').removeClass('active');
-      _ul.find('li').each(function () {
-        const href = $(this).find("a").attr("href");
-        currentName = currentName.includes('-') ? currentName.substring(0, currentName.indexOf('-')) : currentName;
-        if (href.includes(currentName)) {
-          $(this).addClass('active')
-        }
-      })
-    },
-    watch: {
-      '$route' (to, from) {
-        const currentPath = to.name;
-      }
+//      let currentName = this.$router.currentRoute.name;
+//      const _ul = $("#pathUl");
+//      _ul.find('.active').removeClass('active');
+//      _ul.find('li').each(function () {
+//        const href = $(this).find("a").attr("href");
+//        currentName = currentName.includes('-') ? currentName.substring(0, currentName.indexOf('-')) : currentName;
+//        if (href.includes(currentName)) {
+//          $(this).addClass('active')
+//        }
+//      })
     },
     created: function () {
       this.uname = localStorage.uname;
