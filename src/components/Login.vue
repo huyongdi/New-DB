@@ -26,12 +26,12 @@
     <div class="content">
       <div class="content-left pull-left bc-fff">
         <ul>
-          <li @click="clickLi" class="po li-analyze">
+          <li @click="clickLi" class="po li-analyze active">
             <i class="img-analyze"></i>
             <span>Analyze一分析解读平台</span>
             <i class="triangle"></i>
           </li>
-          <li @click="clickLi" class="po li-manage active">
+          <li @click="clickLi" class="po li-manage">
             <i class="img-manage"></i>
             <span>Management一项目管理系统</span>
             <i class="triangle"></i>
@@ -112,7 +112,7 @@
         }).then(function (resp) {
           localStorage.token = resp.data.data.token;
           localStorage.uname = resp.data.data.personnel;
-          const nextPath = _vue.$route.query.next?_vue.$route.query.next:'/dataA/foo/sgList';
+          const nextPath = _vue.$route.query.next?_vue.$route.query.next:'/home';
           _vue.$router.push({path: nextPath})
         }).catch(function (error) {
           _vue.catchFun(error);

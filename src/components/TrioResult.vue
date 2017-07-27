@@ -8,7 +8,10 @@
     <div class="done-list col-md-10 ">
       <div class="title">
         <span class="title-b">任务详情</span>
-        <span class="title-s">< {{sampleInfo}}</span>
+        <span class="title-s">< {{sampleInfo}}
+          <span>父：<span v-if="lists1[0]&&lists1[0].father">{{lists1[0].father.patient}}</span></span>
+          <span>母：<span v-if="lists1[0]&&lists1[0].mother">{{lists1[0].mother.patient}}</span></span>
+        </span>
         <span class="span-a change-panel" @click="showPanelModal">修改panel</span>
       </div>
       <div class="all-content">
@@ -62,16 +65,19 @@
           <!--</div>-->
           <div class="content-1" :class="{hide:!in1}">
             <div class="rea">
-              <span class="my-btn pull-right condition" @click="filtrateShow1Fun"><img
+              <span class="my-btn pull-right condition" @click.stop="filtrateShow1Fun"><img
                 src="../../static/img/red-con.png"
                 alt="">筛选条件</span>
               <!--筛选条件弹框-->
-              <div class="filtrate-content" v-show="filtrateShow1" id="filtrate-content">
+              <div class="filtrate-content hide" @click.stop="" id="filtrate-content">
                 <img src="../../static/img/th-1.png" alt="" class="up">
                 <div class="title">搜索选项</div>
                 <div class="content">
                   <div class="single">
-                    <div class="left" data-name="report">数据库报道：</div>
+                    <div class="left" data-name="report">
+                      <a id="dataBase" class="po" data-toggle="tooltip" data-placement="top" data-original-title="报道：CLINVAR,HGMD数据库">数据库报道</a>
+                    </div>
+
                     <div class="right">
                       <span class="option" data-value="true">已报道</span>
                       <span class="option" data-value="false">未报道</span>
@@ -96,16 +102,25 @@
                     <div class="left" data-name="func">突变类型：</div>
                     <div class="right">
                       <span class="option" data-value="stop">stop*</span>
-                      <span class="option" data-value="nonsynon">nonsynonymous</span>
+                      <span class="option" data-value="nonsyn">nonsynonymous</span>
                       <span class="option" data-value="splic">splicing</span>
                       <span class="option" data-value="frameshift">(non)frameshift</span>
                       <span class="option in default">不筛选</span>
                     </div>
                   </div>
                   <div class="single">
-                    <div class="left" data-name="denvo">新发突变：</div>
+                    <div class="left" data-name="denovo">新发突变：</div>
                     <div class="right">
                       <span class="option" data-value="true">筛选</span>
+                      <span class="option in default">不筛选</span>
+                    </div>
+                  </div>
+                  <div class="single">
+                    <div class="left" data-name="gatk">gatkFilter：</div>
+                    <div class="right">
+                      <span class="option" data-value="pass">PASS</span>
+                      <span class="option" data-value="true">全部</span>
+                      <span class="option" data-value="false">其它</span>
                       <span class="option in default">不筛选</span>
                     </div>
                   </div>
@@ -132,9 +147,6 @@
                       <span class="option" data-value="0">0</span>
                       <span class="option" data-value="0.0001">0.01%</span>
                       <span class="option" data-value="0.001">0.1%</span>
-                      <span class="option" data-value="0.01">1%</span>
-                      <span class="option" data-value="0.02">2%</span>
-                      <span class="option" data-value="0.05">5%</span>
                       <span class="option in default">不筛选</span>
                     </div>
                   </div>
@@ -180,8 +192,7 @@
                 <th>区域</th>
                 <th>功能</th>
                 <th class="disease-td">疾病</th>
-                <th><span v-if="lists1.length !== 0">{{lists1[0].father.patient}}</span></th>
-                <th><span v-if="lists1.length !== 0">{{lists1[0].mother.patient}}</span></th>
+                <th>纯/杂合(受检者/父/母)</th>
                 <th>状态</th>
               </tr>
               </thead>
@@ -204,18 +215,21 @@
                 </td>
                 <td>{{data.annotations.func}}</td>
                 <diseaseTd :geneResp="data.geneResp" @sendPhenotypeMapSingle="getPhenotypeMapSingle"></diseaseTd>
-                <td>父：
-                  <span v-if="data.father.snvinfo">
-                    <span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>
-                    <span v-else=""> - </span>
-                  </span>
+                <td>
+                <span v-if="data.patient.snvinfo">
+                  <span v-if="data.patient.snvinfo.isHomo">{{data.patient.snvinfo.isHomo}}</span>
                   <span v-else=""> - </span>
-                </td>
-                <td>母：
+                </span>
+                  <span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;
+                  <span v-if="data.father.snvinfo">
+                  <span v-if="data.father.snvinfo.isHomo">{{data.father.snvinfo.isHomo}}</span>
+                  <span v-else=""> - </span>
+                </span>
+                  <span v-else=""> - </span>&nbsp;&nbsp;/&nbsp;&nbsp;
                   <span v-if="data.mother.snvinfo">
-                    <span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>
-                    <span v-else=""> - </span>
-                  </span>
+                  <span v-if="data.mother.snvinfo.isHomo">{{data.mother.snvinfo.isHomo}}</span>
+                  <span v-else=""> - </span>
+                </span>
                   <span v-else=""> - </span>
                 </td>
                 <td
@@ -770,7 +784,8 @@
 
       },
       filtrateShow1Fun: function () {
-        this.filtrateShow1 = !this.filtrateShow1
+//        this.filtrateShow1 = !this.filtrateShow1
+        this.switchHide('filtrate-content')
       },
       showDetail: function (url, type) {
         const _vue = this;
@@ -958,6 +973,12 @@
   @tableSha: rgb(185, 184, 184);
   @in: rgb(44, 127, 210);
   @red: rgb(233, 73, 73);
+  .title-s{
+    >span{
+      display: inline-block;
+      margin-left: 20px;
+    }
+  }
   .all-content {
     margin: 15px 0 0 0;
     .change-panel {

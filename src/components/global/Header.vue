@@ -7,30 +7,9 @@
     </div>
     <ul id="pathUl">
       <li>
-        <router-link to="/">
-          <span class="img-analyze li-img"></span>
-          <span>Analyze</span>
-        </router-link>
-        <img class="right-img" src="../../../static/img/header-2.png"/>
-      </li>
-      <li>
-        <router-link to="/dataM/foo/grandE">
-          <span class="img-dataManage li-img"></span>
-          <span>数据管理</span>
-        </router-link>
-        <img class="right-img" src="../../../static/img/header-2.png"/>
-      </li>
-      <li>
-        <router-link to="/dataA/foo/sgList">
-          <span class="img-dataAnalysis li-img"></span>
-          <span>数据分析</span>
-        </router-link>
-        <img class="right-img" src="../../../static/img/header-2.png"/>
-      </li>
-      <li>
-        <router-link to="/taskM/foo/done">
-          <span class="img-taskManage li-img"></span>
-          <span>任务管理</span>
+        <router-link to="/home">
+          <span class="img-bio li-img"></span>
+          <span>BioMedDB</span>
         </router-link>
         <img class="right-img" src="../../../static/img/header-2.png"/>
       </li>
@@ -127,22 +106,22 @@
 
     > ul {
       margin: 0;
-      li.active {
-        background-color: #fff;
-        border-bottom: 1px solid #fff;
-        color: rgb(0, 118, 192);
-        .img-dataAnalysis {
-          background: url(../../../static/img/header-4-1.png) no-repeat center;
-        }
-        .img-taskManage {
-          background-size: 28px 19px;
-          background: url(../../../static/img/header-7-1.png) no-repeat center;
-        }
-        .img-dataManage{
-          background-size: 21px 21px;
-          background: url(../../../static/img/header-5-1.png) no-repeat center;
-        }
-      }
+      /*li.active {*/
+        /*background-color: #fff;*/
+        /*border-bottom: 1px solid #fff;*/
+        /*color: rgb(0, 118, 192);*/
+        /*.img-dataAnalysis {*/
+          /*background: url(../../../static/img/header-4-1.png) no-repeat center;*/
+        /*}*/
+        /*.img-taskManage {*/
+          /*background-size: 28px 19px;*/
+          /*background: url(../../../static/img/header-7-1.png) no-repeat center;*/
+        /*}*/
+        /*.img-dataManage{*/
+          /*background-size: 21px 21px;*/
+          /*background: url(../../../static/img/header-5-1.png) no-repeat center;*/
+        /*}*/
+      /*}*/
       li {
         float: left;
         text-align: center;
@@ -163,10 +142,14 @@
         }
         .li-img {
           display: inline-block;
-          margin-bottom: -5px;
+          margin-bottom: -6px;
           width: 28px;
-          height: 21px;
+          height: 24px;
           margin-right: 8px;
+        }
+        .img-bio{
+          background-size: 22px 23px;
+          background: url(../../../static/img/header-bio.png) no-repeat center;
         }
         .img-analyze {
           background-size: 21px 20px;

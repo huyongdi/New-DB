@@ -1,8 +1,81 @@
 <!--suppress ALL -->
 <template>
-  <div id="app" @keyup.27="abc">
-    <nav-header v-if="inLogin"></nav-header>
-    <router-view></router-view>
+  <div id="app">
+    <div class="all-content" v-if="!inLogin">
+      <nav-header></nav-header>
+      <div class="under">
+        <ul class="under-left">
+          <li>
+            <div class="father">
+              <span class="img task-gene"></span>
+              <span>基因</span>
+              <i class="triangle"></i>
+              <img src="../static/img/under-left-1.png" alt="">
+            </div>
+          </li>
+          <li>
+            <div class="father">
+              <span class="img task-automate"></span>
+              <span>疾病</span>
+              <i class="triangle"></i>
+              <img src="../static/img/under-left-1.png" alt="">
+            </div>
+          </li>
+          <li>
+            <div class="father">
+              <span class="img task-automate"></span>
+              <span>产品</span>
+              <i class="triangle"></i>
+              <img src="../static/img/under-left-1.png" alt="">
+            </div>
+          </li>
+          <li>
+            <div class="father">
+              <span class="img task-automate"></span>
+              <span>表型分析</span>
+              <i class="triangle"></i>
+              <img src="../static/img/under-left-1.png" alt="">
+            </div>
+          </li>
+          <li>
+            <div class="father">
+              <span class="img task-automate"></span>
+              <span>HPOBOX</span>
+              <i class="triangle"></i>
+              <img src="../static/img/under-left-1.png" alt="">
+            </div>
+          </li>
+          <li>
+            <div class="father">
+              <span class="img task-automate"></span>
+              <span>变异</span>
+              <i class="triangle"></i>
+              <img src="../static/img/under-left-1.png" alt="">
+            </div>
+          </li>
+          <!--<li>-->
+            <!--<div class="father">-->
+              <!--<span class="img task-automate"></span>-->
+              <!--<span>自动化报告</span>-->
+              <!--<i class="triangle"></i>-->
+              <!--<img src="../static/img/under-left-1.png" alt="">-->
+            <!--</div>-->
+            <!--<div @click.stop="" class="children">-->
+              <!--<router-link to="/taskM/foo/reportSe" data-code='taskM-reportSe' class="block">-->
+                <!--在线报告查询-->
+              <!--</router-link>-->
+              <!--<router-link to='/taskM/foo/reportSt' data-code="taskM-reportSt" class="block">-->
+                <!--报告统计-->
+              <!--</router-link>-->
+            <!--</div>-->
+          <!--</li>-->
+        </ul>
+        <div class="under-right">
+          <router-view></router-view>
+        </div>
+      </div>
+    </div>
+    <router-view v-if="inLogin"></router-view>
   </div>
 </template>
 <script>
@@ -41,7 +114,6 @@
     },
     watch: {
       '$route' (to, from) { //路由变化的时候判断需不需要加载头部
-        this.inLogin = !new Boolean(localStorage.token)
         if (from.name === 'login') {  //重新登录之后token不刷新
           this.myAxios.headers = {'Authorization': localStorage.token};
         }
@@ -49,6 +121,11 @@
     },
     methods: {
       baseBind: function () {
+        if(this.$route.name == 'login'){
+          this.inLogin = true;
+        }else{
+          this.inLogin = false;
+        }
         /*点击tr加背景色*/
         $("table tbody").off('click').on("click", 'tr', function () {
           if (!$(this).hasClass('not-base')) {
@@ -67,7 +144,7 @@
           if(_currentLi.hasClass('active')){
             _currentLi.removeClass('active')
           }else{
-            $(".under-left").find("li.active").removeClass('active');
+//            $(".under-left").find("li.active").removeClass('active');
             _currentLi.addClass('active');
           }
         });
@@ -78,11 +155,12 @@
         $(".upload-content").on('change','.hide-input',function () {
           const arr = $(this).val().split("\\");
           $(this).parent().find('.show-name').val(arr[arr.length-1])
+        });
+        /*点击其它地方筛选关闭*/
+        $("#app:not('.filtrate-content')").on("click",function () {
+          $('.filtrate-content').addClass('hide')
         })
       },
-      abc:function () {
-        console.log(1111111111)
-      }
     }
   }
 
@@ -172,6 +250,9 @@
           border: 1px solid #d4d4d4;
           border-radius: 3px;
           padding: 1px 8px;
+          &:focus{
+            outline: none;
+          }
         }
         select::-ms-expand { display: none; }
         .my-select{
@@ -186,6 +267,9 @@
           -webkit-appearance:none;
           -ms-appearance:none;
           background: url(../static/img/select-right.png) no-repeat scroll right center transparent;
+          &:focus{
+            outline: none;
+          }
         }
 
         .my-btn{
@@ -431,6 +515,10 @@
                 .children {
                   display: block;
                 }
+                /*左侧导航图标*/
+                .task-gene{
+                  background: url(../static/img/all-1.png) 18px 158px;
+                }
               }
               .father {
                 height: 40px;
@@ -474,6 +562,12 @@
                   background-color: @inBc;
                 }
               }
+
+              /*左侧导航图标*/
+              .task-gene{
+                background: url(../static/img/all-1.png) 0 158px;
+              }
+
             }
             .under-right {
               border-left: 1px solid rgb(211,212,212);
@@ -482,7 +576,7 @@
               width: calc(~'100vw - 300px');
               min-width: 1100px;
               min-height: calc(~'100vh - 58px');
-              padding-left: 30px;
+              padding-left: 32px;
               padding-top: 28px;
               padding-bottom: 50px;
               .title {
