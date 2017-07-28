@@ -13,28 +13,13 @@
             </div>
           </li>
           <!--<li @click="toPage('/illness')">-->
-            <!--<div class="father">-->
-              <!--<span class="img task-illness"></span>-->
-              <!--<span>疾病</span>-->
-              <!--<i class="triangle"></i>-->
-            <!--</div>-->
+          <!--<div class="father">-->
+          <!--<span class="img task-illness"></span>-->
+          <!--<span>疾病</span>-->
+          <!--<i class="triangle"></i>-->
+          <!--</div>-->
           <!--</li>-->
-          <li>
-            <div class="father">
-              <span class="img task-product"></span>
-              <span>产品</span>
-              <i class="triangle"></i>
-              <img src="../static/img/under-left-1.png" alt="">
-            </div>
-            <div @click.stop="" class="children">
-              <router-link to="/taskM/foo/reportSe" data-code='taskM-reportSe' class="block">
-                在线报告查询
-              </router-link>
-              <router-link to='/taskM/foo/reportSt' data-code="taskM-reportSt" class="block">
-                报告统计
-              </router-link>
-            </div>
-          </li>
+          <leftP></leftP>
           <li @click="toPage('/genotype')">
             <div class="father">
               <span class="img task-genotype"></span>
@@ -58,7 +43,11 @@
           </li>
         </ul>
         <div class="under-right">
-          <router-view></router-view>
+          <div class="row">
+            <div class="col-md-10">
+              <router-view></router-view>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -68,6 +57,7 @@
 <script>
 
   import header from './components/global/Header.vue'
+  import leftP from './components/global/LeftProduct.vue'
   import Vue from 'vue'
   import axios from 'axios'
 
@@ -83,6 +73,7 @@
     name: 'app',
     components: {
       'nav-header': header,
+      'leftP': leftP,
     },
     data: function () {
       return {
@@ -90,9 +81,6 @@
         inGene: ''
       }
     },
-//    created: function () {
-//      this.baseBind();
-//    },
     mounted: function () {
       this.baseBind()
     },
@@ -107,13 +95,8 @@
       }
     },
     methods: {
-      //左侧导航hpo的处理逻辑
-      hpoLogic:function () {
-
-      },
-      //hpo结束
-      toPage:function (pagePath) {
-        this.$router.push({path: ''+pagePath})
+      toPage: function (pagePath) {
+        this.$router.push({path: '' + pagePath})
       },
       toHpo: function () {
         window.open('http://chinahpo.org')
@@ -137,7 +120,7 @@
         });
         /*点击左侧列表*/
         $(".under-left").off('click').on('click', '>li', function (event) {
-          if($(this).data('name') == 'hpo'){
+          if ($(this).data('name') == 'hpo') {
             return;
           }
           const _currentLi = $(event.target).closest('li');
@@ -334,6 +317,29 @@
         }
         .bc-fff {
           background-color: #fff;
+        }
+        ul{
+          padding-left: 0;
+          background: #fff;
+          li{
+            cursor: pointer;
+            &:hover{
+              background-color: @trHover;
+              height: 25px;
+
+            }
+          }
+          li.in{
+            background-color: @trIn;
+          }
+          li:first-child{
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+          }
+          li:last-child{
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+          }
         }
         /*表格样式*/
         table {
@@ -608,7 +614,7 @@
               min-width: 1100px;
               min-height: calc(~'100vh - 58px');
               padding-left: 32px;
-              padding-top: 28px;
+              padding-top: 32px;
               padding-bottom: 50px;
               .title {
                 color: rgb(67, 67, 67);
