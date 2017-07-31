@@ -68,6 +68,14 @@
     '<div class="bounce3"></div> ' +
     '</div>'
   });
+  Vue.component('search-div', {
+    template: '<div class="search-div"> ' +
+    '<input type="text" placeholder="搜索基因" class="search-input">' +
+    '<span class="my-btn">' +
+    '<img src="../../static/img/red-con.png" alt="">' +
+    '</span> ' +
+    '</div>'
+  });
 
   export default {
     name: 'app',
@@ -82,7 +90,11 @@
       }
     },
     mounted: function () {
-      this.baseBind()
+      this.baseBind();
+      if(!!localStorage.token){
+        const nextPath = this.$route.query.next?this.$route.query.next:'/home';
+        this.$router.push({path: nextPath})
+      }
     },
     updated: function () {
       this.baseBind()
@@ -232,13 +244,30 @@
         input, textarea {
           border: 1px solid #d4d4d4;
           border-radius: 3px;
-          padding: 1px 8px;
+          padding: 3px 10px;
           &:focus {
             outline: none;
           }
         }
         select::-ms-expand {
           display: none;
+        }
+        .search-div {
+          display: inline-block;
+          .search-input {
+            width: 240px;
+            float: left;
+          }
+          .my-btn {
+            float: left;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            width: 45px;
+            margin-left: -6px;
+            img {
+              margin-left: 3px;
+            }
+          }
         }
         .my-select {
           border: 1px solid #d4d4d4;
@@ -318,25 +347,25 @@
         .bc-fff {
           background-color: #fff;
         }
-        ul{
+        ul.my-ul {
           padding-left: 0;
           background: #fff;
-          li{
+          li {
             cursor: pointer;
-            &:hover{
+            &:hover {
               background-color: @trHover;
               height: 25px;
 
             }
           }
-          li.in{
+          li.in {
             background-color: @trIn;
           }
-          li:first-child{
+          li:first-child {
             border-top-left-radius: 5px;
             border-top-right-radius: 5px;
           }
-          li:last-child{
+          li:last-child {
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
           }
@@ -616,13 +645,13 @@
               padding-left: 32px;
               padding-top: 32px;
               padding-bottom: 50px;
-              .title {
+              .page-title {
+                display: block;
+                font-size: 18px;
                 color: rgb(67, 67, 67);
-                font-weight: bold;
-                .title-b {
-                  font-weight: bold;
-                  font-size: 18px;
-                }
+              }
+              .title-below {
+                margin: 15px 0;
               }
             }
           }

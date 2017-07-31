@@ -61,7 +61,7 @@
 
           <div class="select-div hide" id="select-div" @click.stop="">
             <img src="../../static/img/home-10.png" alt="">
-            <ul class="shadow">
+            <ul class="shadow my-ul">
               <li @click="addIn">基因</li>
               <li @click="addIn">产品</li>
               <!--<li>疾病</li>-->
@@ -76,26 +76,23 @@
 
 <script>
   export default {
-    created:function () {
+    created: function () {
       $("#app:not('#select-div')").on("click", function () {
         $("#select-div").addClass('hide')
       })
     },
-    methods:{
-      search:function () {
+    methods: {
+      search: function () {
 
       },
-      select:function () {
+      select: function () {
         this.switchHide('select-div')
       },
-      addIn:function (event) {
+      addIn: function (event) {
         const _this = $(event.target);
-        if(_this.hasClass('in')){
-          _this.removeClass('in')
-        }else{
-          _this.addClass('in')
-        }
-
+        _this.parent().find('.in').removeClass("in");
+        _this.addClass('in');
+        $(this).addClass('hide')
       }
     }
   }
@@ -122,61 +119,63 @@
         input {
           width: 250px;
         }
-        .remove-input{
+        .remove-input {
           position: relative;
           display: inline-block;
           border-radius: 3px;
           margin-left: -7px;
-          height: 24px;
+          height: 28px;
           vertical-align: top;
           background: linear-gradient(to bottom, #f46554, #ea533f);
+          >img{
+            height: 27px;
+          }
           .search {
             cursor: pointer;
             display: inline-block;
             width: 35px;
-            &:active{
+            &:active {
               background: linear-gradient(to bottom, #ea533f, #f46544);
               border-radius: 3px 0 0 3px;
             }
-            img{
+            img {
               margin-left: 5px;
               margin-top: 2px;
             }
           }
-          .select{
+          .select {
             cursor: pointer;
             display: inline-block;
             width: 24px;
             height: 24px;
-            &:active{
+            &:active {
               background: linear-gradient(to bottom, #ea533f, #f46544);
               border-radius: 0 3px 3px 0;
             }
-            img{
+            img {
               margin-right: 5px;
             }
           }
-          .select-div{
+          .select-div {
             position: absolute;
             width: 100px;
-            img{
+            img {
               position: absolute;
               right: 37px;
               z-index: 10;
             }
-            ul{
+            ul {
               position: absolute;
               top: 8px;
               width: 100px;
               /*height: 77px;*/
               height: 52px;
-              li{
+              li {
                 height: 25px;
               }
             }
           }
         }
-
       }
       .topRow {
         margin: 50px 0 40px 0;

@@ -15,8 +15,8 @@ Vue.prototype.loginAxios = axios.create({
   baseURL: 'https://biomeddb.grandbox.site/',
 });
 Vue.prototype.myAxios = axios.create({
-  // baseURL: 'http://118.26.69.171:8082/',
-  baseURL: 'https://biomeddb.grandbox.site/',
+  baseURL: 'http://118.26.69.171:8082/',
+  // baseURL: 'https://biomeddb.grandbox.site/',
   headers:{'Authorization': localStorage.token}
 });
 
@@ -59,7 +59,7 @@ Vue.prototype.catchFun = function (error) {
     if (error.response.status === 401) {
       if (this.$route.name !== 'login') {
         // localStorage.token = '';
-        this.$router.push({path: '/?next=' + this.$route.path})
+        // this.$router.push({path: '/?next=' + this.$route.path})  暂时去掉这行
       }
     }
   } else {
