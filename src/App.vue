@@ -91,10 +91,10 @@
     },
     mounted: function () {
       this.baseBind();
-      if(!!localStorage.token){
-        const nextPath = this.$route.query.next?this.$route.query.next:'/home';
-        this.$router.push({path: nextPath})
-      }
+//      if(!!localStorage.token){
+//        const nextPath = this.$route.query.next?this.$route.query.next:'/home';
+//        this.$router.push({path: nextPath})
+//      }
     },
     updated: function () {
       this.baseBind()
@@ -393,6 +393,7 @@
               th {
                 padding: 5px 0 5px 17px;
                 border-bottom: 2px solid rgb(206, 219, 227);
+                border-top: none;
               }
               th:first-child {
                 border-top-left-radius: 5px;
@@ -456,6 +457,7 @@
             tr {
               td {
                 padding: 5px 8px 5px 17px;
+                border-top: none;
               }
               td:not(:first-child) {
                 border-left: 1px dashed @tdBorder;
@@ -476,6 +478,10 @@
           table tr:first-child th:first-child {
             border-top-left-radius: 5px
           }
+        }
+        /*模拟表格样式*/
+        .similar-table{
+          background: #fff;
         }
         /*筛选框样式*/
         .filtrate-content {

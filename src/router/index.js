@@ -32,11 +32,11 @@ export default new Router({
       name: 'genotype',
       component: Genotype
     },
-    {
-      path: '/genotype',
-      name: 'genotype',
-      component: Genotype
-    },
+    // {
+    //   path: '/genotype',
+    //   name: 'genotype',
+    //   component: Genotype
+    // },
     {
       path: '/variation',
       name: 'variation',
