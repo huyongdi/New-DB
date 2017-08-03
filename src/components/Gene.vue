@@ -25,10 +25,10 @@
     <!--<page :childCount="count" :childReset="0" @childCurrent="getCurrent"></page>-->
 
     <div id="allGene" class='similar-table'>
-      <div class="row similar-tr" v-html="geneTitle"></div>
-      <div class="row">
+      <div class="row similar-thead" v-html="geneTitle"></div>
+      <div class="row similar-tbody">
         <span class="col-md-1" v-for="data in allGeneData">
-          <div v-for="list in data">{{list}}</div>
+          <div :class="{'special-bc':index%2!=0}" class="similar-td" v-for="(list,index) in data">{{list}}</div>
         </span>
       </div>
 
@@ -48,7 +48,9 @@
         allGeneReset: 0,
         allGenePage: 1,
         allGeneData:[],
-        geneTitle:'',
+        geneTitle:'<span class="col-md-9 similar-th">A</span><span class="col-md-3 similar-th">B</span>',
+//        geneTitle:'',
+//        currentExtraData:[], //当前页面额外的数据
 
         current: 1,
         count: 1,
@@ -56,7 +58,7 @@
         loading: ''
       }
     },
-    created:function () {
+    mounted:function () {
       this.fillAllGene();
     },
     components: {
@@ -65,38 +67,68 @@
     methods: {
       fillAllGene: function () {
         const _vue = this;
+//        _vue.currentExtraData=[];
         let arr = [];
-        let i = 1;
+        let i = 0;
         while (i < 240) {
-          if (i < 162) {
+          if (i < 65) {
             arr.push('A' + i);
-          } else {
+          } else if(i>=65&&i<164) {
             arr.push('B' + i);
+          }else{
+            arr.push('C' + i);
           }
           i++;
         }
+        _vue.allGeneData = _vue.outputs(arr);
+//        let geneObj = {};
+//        let firstLetter = '';
+//        $.each(arr, function (i, data) {
+//          const currentFirstLetter = data.substring(0, 1);
+//          if (currentFirstLetter != firstLetter) {
+//            firstLetter = currentFirstLetter;
+//            geneObj[firstLetter] = [];
+//            geneObj[firstLetter].push(data)
+//          } else {
+//            geneObj[firstLetter].push(data)
+//          }
+//        });
 
-        let geneObj = {};
-        let firstLetter = '';
-        $.each(arr, function (i, data) {
-          const currentFirstLetter = data.substring(0, 1);
-          if (currentFirstLetter != firstLetter) {
-            firstLetter = currentFirstLetter;
-            geneObj[firstLetter] = [];
-            geneObj[firstLetter].push(data)
-          } else {
-            geneObj[firstLetter].push(data)
-          }
-        });
-        $.each(geneObj, function (key, value) {
-          console.log(20-value.length % 20);
-          for (let i = 0; i < value.length % 20; i++) {
-            value.push('')
-          }
-          const colCount =value.length / 20;
-          _vue.geneTitle+=`<span class="col-md-${colCount}">${key}</span>`;
-          $.merge(_vue.allGeneData,_vue.outputs(value))
-        });
+//        let objKeyArr = Object.keys(geneObj); //对象的key保存为数组
+//        let objValueArr = Object.values(geneObj); //对象的value保存为数组
+//        let currentExtraCount =0 ;//当前页面额外多出的数量
+
+//        $.each(geneObj, function (key, value) {
+//          if(objKeyArr.length>1){ //当前页有多个基因的时候才处理,单个基因直接显示就好
+//            if(key == objKeyArr[objKeyArr.length-1]){
+//              if(value.length >=currentExtraCount){ //如果最后一个基因的数量就可以满足去掉额外的
+//
+//
+//                $.each(value,function (i,data) {
+//                  if(i>=value.length-currentExtraCount){
+//                    _vue.currentExtraData.push(data)
+//                  }
+//                });
+//                value.length = value.length-currentExtraCount;
+//
+//
+//              }else{
+////                _vue.currentExtraData = value;
+////                value.length = 0;
+//              }
+//            }else{
+//              let remainder = value.length % 20;
+//              currentExtraCount = 20-remainder;
+//              let i = 0;
+//              for (i;i < remainder; i++) {
+//                value.push('')
+//              }
+//            }
+//          }
+//          const colCount =value.length / 20;
+//          _vue.geneTitle+=`<span class="col-md-${colCount} similar-th">${key}</span>`;
+//          $.merge(_vue.allGeneData,_vue.outputs(value))
+//        });
       },
       allGeneGetCurrent: function (data) {
         this.allGenePage = data

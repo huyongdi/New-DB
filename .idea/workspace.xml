@@ -1,0 +1,1076 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5bb1820c-f60d-429d-a2e6-bd847b9d20a0" name="Default" comment="处理数据">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.vue" afterPath="$PROJECT_DIR$/src/App.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/Gene.vue" afterPath="$PROJECT_DIR$/src/components/Gene.vue" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="App.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/App.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7174">
+              <caret line="529" column="17" lean-forward="false" selection-start-line="529" selection-start-column="17" selection-end-line="529" selection-end-column="17" />
+              <folding>
+                <element signature="e#2483#2553#0" expanded="false" />
+                <element signature="e#8294#9020#0" expanded="false" />
+                <element signature="e#9979#10071#0" expanded="false" />
+                <element signature="e#10979#12521#0" expanded="false" />
+                <element signature="e#12564#13175#0" expanded="false" />
+                <element signature="e#14801#15930#0" expanded="false" />
+                <element signature="e#15971#20308#0" expanded="false" />
+                <element signature="e#16130#19664#0" expanded="false" />
+                <element signature="e#17559#18435#0" expanded="false" />
+                <element signature="e#18460#18959#0" expanded="false" />
+                <element signature="e#20343#21136#0" expanded="false" />
+                <marker date="1501573958112" expanded="true" signature="7741:7751" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gene.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/Gene.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2652">
+              <caret line="156" column="28" lean-forward="false" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+              <folding>
+                <marker date="1501575026624" expanded="false" signature="278:293" ph="..." />
+                <marker date="1501575026624" expanded="false" signature="427:443" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+              <folding>
+                <element signature="e#2110#2400#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/router/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="442">
+              <caret line="34" column="2" lean-forward="false" selection-start-line="34" selection-start-column="2" selection-end-line="38" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Vue File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>5050</find>
+      <find>inLogin</find>
+      <find>分析解读</find>
+      <find>triangle</find>
+      <find>variation</find>
+      <find>includes</find>
+      <find>active</find>
+      <find>shadow</find>
+      <find>under-right</find>
+      <find>tr</find>
+      <find>bor</find>
+      <find>height</find>
+      <find>ul</find>
+      <find>_vue</find>
+      <find>getCurrent</find>
+      <find>my-btn</find>
+      <find>console.log</find>
+      <find>.remove-input</find>
+      <find>/home</find>
+      <find>allGene</find>
+      <find>allData</find>
+      <find>${</find>
+      <find>my-table</find>
+      <find>geneTitle</find>
+      <find>currentExtraData</find>
+      <find>allGeneData</find>
+      <find>similar-table</find>
+      <find>console</find>
+      <find>$.merge</find>
+      <find>anaUrl</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>moduleDataFromFatherCNV</replace>
+      <replace>percentData</replace>
+      <replace>grandwcnv</replace>
+      <replace>col-md-12</replace>
+      <replace>grandanno</replace>
+      <replace>lists0</replace>
+      <replace>myAxios</replace>
+      <replace>moduleData</replace>
+      <replace>filtrate-content-geneCover</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-analyze</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-analyze\static\img</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-analyze\dist</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-analyze\node_modules</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-analyze\src\components\global</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-analyze\src\components</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-analyze\src</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-DB</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-DB\src\components</dir>
+      <dir>C:\Users\Grandomics7052\Desktop\workspace\New-DB\src</dir>
+      <dir>E:\workspace\New-DB\src</dir>
+    </dirStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/components/CnvList.vue" />
+        <option value="$PROJECT_DIR$/src/components/SgList.vue" />
+        <option value="$PROJECT_DIR$/src/components/MtList.vue" />
+        <option value="$PROJECT_DIR$/src/components/TaskM.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/DiseaseTr.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/HpoModal.html" />
+        <option value="$PROJECT_DIR$/src/components/GetInterVar.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/MutateModalMito.vue" />
+        <option value="$PROJECT_DIR$/src/components/LocusSvg.vue" />
+        <option value="$PROJECT_DIR$/src/components/Doing.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/fuzzyQuery.vue" />
+        <option value="$PROJECT_DIR$/src/components/Done.vue" />
+        <option value="$PROJECT_DIR$/src/components/SnvList.vue" />
+        <option value="$PROJECT_DIR$/build/utils.js" />
+        <option value="$PROJECT_DIR$/build/webpack.base.conf.js" />
+        <option value="$PROJECT_DIR$/src/components/global/Page.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/DiseaseTd.vue" />
+        <option value="$PROJECT_DIR$/src/components/DataA.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/LocusModal.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/MutateModalCNV.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/PanelModal.vue" />
+        <option value="$PROJECT_DIR$/node_modules/bootstrap/dist/js/bootstrap.js" />
+        <option value="$PROJECT_DIR$/src/components/CnvResult.vue" />
+        <option value="$PROJECT_DIR$/src/components/MtResult.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/GeneCover.vue" />
+        <option value="$PROJECT_DIR$/src/components/CapList.vue" />
+        <option value="$PROJECT_DIR$/src/components/AllUpload.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/grandList.vue" />
+        <option value="$PROJECT_DIR$/src/components/TrioList.vue" />
+        <option value="$PROJECT_DIR$/src/components/SgResult.vue" />
+        <option value="$PROJECT_DIR$/src/components/SnvResult.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/MutateModal.vue" />
+        <option value="$PROJECT_DIR$/src/components/AddCap.vue" />
+        <option value="$PROJECT_DIR$/src/components/GrandE.vue" />
+        <option value="$PROJECT_DIR$/src/components/SingleUpload.vue" />
+        <option value="$PROJECT_DIR$/src/components/TrioResult.vue" />
+        <option value="$PROJECT_DIR$/config/index.js" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/components/global/Header.vue" />
+        <option value="$PROJECT_DIR$/src/components/Illness.vue" />
+        <option value="$PROJECT_DIR$/src/Genotype.vue" />
+        <option value="$PROJECT_DIR$/src/components/Variation.vue" />
+        <option value="$PROJECT_DIR$/src/components/Product.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/LeftProduct.vue" />
+        <option value="$PROJECT_DIR$/src/components/Login.vue" />
+        <option value="$PROJECT_DIR$/src/components/global/HpoModal.vue" />
+        <option value="$PROJECT_DIR$/src/components/Home.vue" />
+        <option value="$PROJECT_DIR$/src/router/index.js" />
+        <option value="$PROJECT_DIR$/src/App.vue" />
+        <option value="$PROJECT_DIR$/src/components/Gene.vue" />
+        <option value="$PROJECT_DIR$/src/main.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>false</service-enabled>
+    <exe-path />
+    <annotation-enable>false</annotation-enable>
+    <other-services-enabled>false</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Code quality toolsJavaScript</id>
+          </State>
+          <State>
+            <id>ECMAScript 6 migration aidsJavaScript</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>JavaScript</id>
+          </State>
+          <State>
+            <id>Meteor</id>
+          </State>
+          <State>
+            <id>Vue</id>
+          </State>
+          <State>
+            <id>XPath</id>
+          </State>
+          <State>
+            <id>XSLT</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Eslint</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="New-DB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New-DB" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New-DB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New-DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New-DB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New-DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New-DB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New-DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="global" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New-DB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New-DB" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New-DB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New-DB" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="New-DB" type="b2602c69:ProjectViewProjectNode" />
+              <item name="New-DB" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Templates" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="C:\Users\Grandomics7052\Desktop\workspace\New-analyze\node_modules\eslint" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/.3.3.7@bootstrap/dist/js/bootstrap.js" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Grandomics7052\Desktop\workspace\New-DB\static\img" />
+      <recent name="C:\Users\Grandomics7052\Desktop\workspace\New-analyze\static\img" />
+      <recent name="C:\Users\Grandomics7052\Desktop\workspace\New-analyze\src\components\global" />
+      <recent name="C:\Users\Grandomics7052\Desktop\workspace\New-analyze\static" />
+      <recent name="C:\Users\Grandomics7052\Desktop\workspace\New-analyze\src\components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Grandomics7052\Desktop\workspace\New-DB\src\components" />
+      <recent name="C:\Users\Grandomics7052\Desktop\workspace\New-analyze\src\components" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+    </configuration>
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5bb1820c-f60d-429d-a2e6-bd847b9d20a0" name="Default" comment="" />
+      <created>1496727600205</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1496727600205</updated>
+      <workItem from="1496727603332" duration="8567000" />
+      <workItem from="1496795907153" duration="18366000" />
+      <workItem from="1496880636630" duration="591000" />
+      <workItem from="1496967525540" duration="31000" />
+      <workItem from="1496967629866" duration="1195000" />
+      <workItem from="1497227259214" duration="24933000" />
+      <workItem from="1497313207339" duration="18165000" />
+      <workItem from="1497340438451" duration="2550000" />
+      <workItem from="1497405338838" duration="5110000" />
+      <workItem from="1497501721008" duration="1840000" />
+      <workItem from="1497841761949" duration="6358000" />
+      <workItem from="1497944618988" duration="149000" />
+      <workItem from="1497945668819" duration="771000" />
+      <workItem from="1498097702888" duration="3920000" />
+      <workItem from="1498110691980" duration="9132000" />
+      <workItem from="1498176764364" duration="1197000" />
+      <workItem from="1498436700326" duration="25416000" />
+      <workItem from="1498522703906" duration="13467000" />
+      <workItem from="1498608879602" duration="12279000" />
+      <workItem from="1498695680785" duration="25154000" />
+      <workItem from="1498782789751" duration="10483000" />
+      <workItem from="1499041787593" duration="20303000" />
+      <workItem from="1499127853210" duration="21904000" />
+      <workItem from="1499214159909" duration="18249000" />
+      <workItem from="1499300540459" duration="2640000" />
+      <workItem from="1499329890073" duration="604000" />
+      <workItem from="1499396464360" duration="3720000" />
+      <workItem from="1499669845390" duration="8792000" />
+      <workItem from="1499733038144" duration="12296000" />
+      <workItem from="1499819553819" duration="14403000" />
+      <workItem from="1499905436128" duration="22859000" />
+      <workItem from="1499992438252" duration="5927000" />
+      <workItem from="1500015540395" duration="8796000" />
+      <workItem from="1500251302435" duration="9940000" />
+      <workItem from="1500337167908" duration="18468000" />
+      <workItem from="1500424373158" duration="727000" />
+      <workItem from="1500425381861" duration="11877000" />
+      <workItem from="1500444521133" duration="7384000" />
+      <workItem from="1500510723514" duration="25795000" />
+      <workItem from="1500596858637" duration="16453000" />
+      <workItem from="1500856196571" duration="9000" />
+      <workItem from="1500856422326" duration="19830000" />
+      <workItem from="1500945843595" duration="17807000" />
+      <workItem from="1500979172306" duration="18000" />
+      <workItem from="1501029837661" duration="6863000" />
+      <workItem from="1501038921653" duration="23000" />
+      <workItem from="1501038953511" duration="5526000" />
+      <workItem from="1501115927502" duration="10504000" />
+      <workItem from="1501202035529" duration="18774000" />
+      <workItem from="1501460428159" duration="22407000" />
+      <workItem from="1501550919823" duration="10572000" />
+      <workItem from="1501636597170" duration="605000" />
+      <workItem from="1501641443550" duration="20000" />
+      <workItem from="1501641600634" duration="49000" />
+      <workItem from="1501720337741" duration="509000" />
+      <workItem from="1501721133287" duration="497000" />
+    </task>
+    <task id="LOCAL-00001" summary="11">
+      <created>1496741396325</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1496741396325</updated>
+    </task>
+    <task id="LOCAL-00002" summary="等待修改高度问题">
+      <created>1496827642637</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1496827642637</updated>
+    </task>
+    <task id="LOCAL-00003" summary="等待table阴影开始">
+      <created>1497335696915</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1497335696915</updated>
+    </task>
+    <task id="LOCAL-00004" summary="等待UI修改">
+      <created>1498698585721</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1498698585721</updated>
+    </task>
+    <task id="LOCAL-00005" summary="20170703">
+      <created>1499042637703</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1499042637703</updated>
+    </task>
+    <task id="LOCAL-00006" summary="201707031726">
+      <created>1499074009796</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1499074009807</updated>
+    </task>
+    <task id="LOCAL-00007" summary="准备开始写结果页面">
+      <created>1499150417182</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1499150417182</updated>
+    </task>
+    <task id="LOCAL-00008" summary="20170707">
+      <created>1499397913471</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1499397913471</updated>
+    </task>
+    <task id="LOCAL-00009" summary="20170711 提交组件">
+      <created>1499759893764</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1499759893764</updated>
+    </task>
+    <task id="LOCAL-00010" summary="20170712">
+      <created>1499838748391</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1499838748391</updated>
+    </task>
+    <task id="LOCAL-00011" summary="全局配置以及按钮">
+      <created>1499938681020</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1499938681020</updated>
+    </task>
+    <task id="LOCAL-00012" summary="20170714 addcapture">
+      <created>1500024660580</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1500024660580</updated>
+    </task>
+    <task id="LOCAL-00013" summary="axios分类">
+      <created>1500256596714</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1500256596714</updated>
+    </task>
+    <task id="LOCAL-00014" summary="20170718 准备开始写结果">
+      <created>1500359596560</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1500359596560</updated>
+    </task>
+    <task id="LOCAL-00015" summary="20170719 准备开始写结果">
+      <created>1500426968303</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1500426968303</updated>
+    </task>
+    <task id="LOCAL-00016" summary="20170719 结果页面前面2个实现">
+      <created>1500457962384</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1500457962385</updated>
+    </task>
+    <task id="LOCAL-00017" summary="20170721 提交第一个结果页面">
+      <created>1500602772904</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1500602772904</updated>
+    </task>
+    <task id="LOCAL-00018" summary="20170721 提交第二个结果页面 grandmito">
+      <created>1500609528473</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1500609528473</updated>
+    </task>
+    <task id="LOCAL-00019" summary="20170724 提交第三个结果页面">
+      <created>1500858692450</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1500858692450</updated>
+    </task>
+    <task id="LOCAL-00020" summary="最后一个结果页面">
+      <created>1500866788561</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1500866788561</updated>
+    </task>
+    <task id="LOCAL-00021" summary="解决表格问题">
+      <created>1500881045142</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1500881045142</updated>
+    </task>
+    <task id="LOCAL-00022" summary="待解决表格隐藏问题">
+      <created>1500884511021</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1500884511022</updated>
+    </task>
+    <task id="LOCAL-00023" summary="合并修改">
+      <created>1500955423586</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1500955423586</updated>
+    </task>
+    <task id="LOCAL-00024" summary="合并修改">
+      <created>1500961556875</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1500961556875</updated>
+    </task>
+    <task id="LOCAL-00025" summary="合并修改">
+      <created>1500962113525</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1500962113525</updated>
+    </task>
+    <task id="LOCAL-00026" summary="合并修改">
+      <created>1500978369728</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1500978369728</updated>
+    </task>
+    <task id="LOCAL-00027" summary="提交部分修改">
+      <created>1501035740838</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1501035740838</updated>
+    </task>
+    <task id="LOCAL-00028" summary="合并修改">
+      <created>1501038856376</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1501038856376</updated>
+    </task>
+    <task id="LOCAL-00029" summary="初步定义逻辑">
+      <created>1501116958363</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1501116958363</updated>
+    </task>
+    <task id="LOCAL-00030" summary="初步定义逻辑">
+      <created>1501126491717</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1501126491717</updated>
+    </task>
+    <task id="LOCAL-00031" summary="初步定义逻辑">
+      <created>1501234087059</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1501234087059</updated>
+    </task>
+    <task id="LOCAL-00032" summary="准备测试基因页面">
+      <created>1501480987629</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1501480987629</updated>
+    </task>
+    <task id="LOCAL-00033" summary="处理数据">
+      <created>1501551876275</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1501551876275</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="534824000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24710222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297062" sideWeight="0.49789253" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19586506" sideWeight="0.53793466" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19586506" sideWeight="0.46206534" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20457019" sideWeight="0.4610116" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2437432" sideWeight="0.49578503" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24265505" sideWeight="0.4678609" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25813448" sideWeight="0.5031679" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25921908" sideWeight="0.4968321" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24403471" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22850925" sideWeight="0.49789253" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24710222" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27440348" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3991323" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="等待table阴影开始" />
+    <MESSAGE value="等待UI修改" />
+    <MESSAGE value="20170703" />
+    <MESSAGE value="201707031726" />
+    <MESSAGE value="准备开始写结果页面" />
+    <MESSAGE value="20170707" />
+    <MESSAGE value="20170711 提交组件" />
+    <MESSAGE value="20170712" />
+    <MESSAGE value="全局配置以及按钮" />
+    <MESSAGE value="20170714 addcapture" />
+    <MESSAGE value="axios分类" />
+    <MESSAGE value="20170718 准备开始写结果" />
+    <MESSAGE value="20170719 准备开始写结果" />
+    <MESSAGE value="20170719 结果页面前面2个实现" />
+    <MESSAGE value="20170721 提交第一个结果页面" />
+    <MESSAGE value="20170721 提交第二个结果页面 grandmito" />
+    <MESSAGE value="20170724 提交第三个结果页面" />
+    <MESSAGE value="最后一个结果页面" />
+    <MESSAGE value="解决表格问题" />
+    <MESSAGE value="待解决表格隐藏问题" />
+    <MESSAGE value="提交部分修改" />
+    <MESSAGE value="合并修改" />
+    <MESSAGE value="初步定义逻辑" />
+    <MESSAGE value="准备测试基因页面" />
+    <MESSAGE value="处理数据" />
+    <option name="LAST_COMMIT_MESSAGE" value="处理数据" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="10" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/components/global/GeneCover.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/DataM.vue" />
+    <entry file="file://$PROJECT_DIR$/static/img/header-1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/header-4-1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/header-4.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/header-3.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AllUpload.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/SgList.vue" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript6.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/MtResult.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/SnvResult.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/global/MutateModal.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/SgResult.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/global/grandList.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/AddCap.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/CapList.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/GrandE.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/SingleUpload.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/TrioResult.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/TrioList.vue" />
+    <entry file="file://$PROJECT_DIR$/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="19" lean-forward="false" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/all-1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/TaskM.vue" />
+    <entry file="file://$PROJECT_DIR$/src/components/Illness.vue" />
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/Header.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="53" column="11" lean-forward="true" selection-start-line="53" selection-start-column="11" selection-end-line="53" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Genotype.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Variation.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Product.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="2" lean-forward="false" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/home-1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/home-2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/home-5.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/home-4.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/home-2.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/home-6.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/home-7.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/LeftProduct.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="40" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/red-submit.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/red-back.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/red-save.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/red-refresh.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/red-login.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/red-delete.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/img/red-con.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Home.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="129" column="15" lean-forward="true" selection-start-line="129" selection-start-column="15" selection-end-line="129" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Login.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="105" column="29" lean-forward="true" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/global/HpoModal.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="108" column="46" lean-forward="false" selection-start-line="108" selection-start-column="46" selection-end-line="108" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7174">
+          <caret line="529" column="17" lean-forward="false" selection-start-line="529" selection-start-column="17" selection-end-line="529" selection-end-column="17" />
+          <folding>
+            <element signature="e#2483#2553#0" expanded="false" />
+            <element signature="e#8294#9020#0" expanded="false" />
+            <element signature="e#9979#10071#0" expanded="false" />
+            <element signature="e#10979#12521#0" expanded="false" />
+            <element signature="e#12564#13175#0" expanded="false" />
+            <element signature="e#14801#15930#0" expanded="false" />
+            <element signature="e#15971#20308#0" expanded="false" />
+            <element signature="e#16130#19664#0" expanded="false" />
+            <element signature="e#17559#18435#0" expanded="false" />
+            <element signature="e#18460#18959#0" expanded="false" />
+            <element signature="e#20343#21136#0" expanded="false" />
+            <marker date="1501573958112" expanded="true" signature="7741:7751" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="34" column="2" lean-forward="false" selection-start-line="34" selection-start-column="2" selection-end-line="38" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Gene.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2652">
+          <caret line="156" column="28" lean-forward="false" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
+          <folding>
+            <marker date="1501575026624" expanded="false" signature="278:293" ph="..." />
+            <marker date="1501575026624" expanded="false" signature="427:443" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="52" column="29" lean-forward="true" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
+          <folding>
+            <element signature="e#2110#2400#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -480,8 +480,57 @@
           }
         }
         /*模拟表格样式*/
-        .similar-table{
+        .similar-table {
+          >div{
+            padding: 0;
+            margin: 0;
+          }
           background: #fff;
+          .shadow;
+          .similar-thead{
+            span{
+              background-color: rgb(230,239,245);
+            }
+            span:first-child {
+              border-top-left-radius: 5px;
+            }
+            span:last-child {
+              border-top-right-radius: 5px;
+            }
+            span:not(:first-child) {
+              border-left: 1px dashed @tdBorder;
+            }
+            border-bottom: 2px solid rgb(206,219,227);
+          }
+          .similar-th, .similar-td {
+            height: 26px;
+            line-height: 26px;
+          }
+          .similar-tbody {
+            >span:not(:last-child){
+              border-right: 1px dashed @tdBorder;
+            }
+            >span{
+              padding: 0;
+              >div{
+                padding-left: 15px;
+                border-bottom: 1px dashed @tdBorder;
+                cursor: pointer;
+                &:hover{
+                  background-color: rgb(255,245,231)
+                }
+              }
+              >div.in{
+                background-color: rgb(255,236,210);
+              }
+              >div.special-bc{
+                background-color: rgb(246,248,250);
+                &:hover{
+                  background-color: rgb(255,245,231)
+                }
+              }
+            }
+          }
         }
         /*筛选框样式*/
         .filtrate-content {
