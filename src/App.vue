@@ -455,6 +455,12 @@
             cursor: pointer;
             font-size: 12px;
             tr {
+              td:first-child {
+                border-bottom-left-radius: 5px;
+              }
+              td:last-child {
+                border-bottom-right-radius: 5px;
+              }
               td {
                 padding: 5px 8px 5px 17px;
                 border-top: none;
@@ -474,9 +480,6 @@
                 border-bottom: 1px dashed @tdBorder;
               }
             }
-          }
-          table tr:first-child th:first-child {
-            border-top-left-radius: 5px
           }
         }
         /*模拟表格样式*/
@@ -700,6 +703,12 @@
               padding-left: 32px;
               padding-top: 32px;
               padding-bottom: 50px;
+              .shadow-title{
+                margin: 16px 33px 0 33px;
+                padding-bottom: 5px;
+                border-bottom: 1px solid rgb(212, 212, 212);
+                color: rgb(0, 118, 192);
+              }
               .page-title {
                 display: block;
                 font-size: 18px;
@@ -707,6 +716,14 @@
               }
               .title-below {
                 margin: 15px 0;
+              }
+              .title {
+                color: rgb(67, 67, 67);
+                font-weight: bold;
+                .title-b {
+                  font-weight: bold;
+                  font-size: 18px;
+                }
               }
             }
           }

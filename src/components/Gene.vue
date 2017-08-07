@@ -1,9 +1,13 @@
 <template>
   <div class="gene-page">
-    <span class="page-title">基因</span>
+    <div class="title">
+      <span class="title-b">医学大数据库</span>
+      <span class="title-s">< 基因</span>
+    </div>
     <loading v-if="loading"></loading>
     <div class="title-below">
       <search-div></search-div>
+      <button @click="twoPage">产生第二页数据</button>
     </div>
     <!--<table class="my-table">-->
     <!--<thead>-->
@@ -25,10 +29,10 @@
     <!--<page :childCount="count" :childReset="0" @childCurrent="getCurrent"></page>-->
 
     <div id="allGene" class='similar-table'>
-      <div class="row similar-thead" v-html="geneTitle"></div>
+      <!--<div class="row similar-thead" v-html="geneTitle"></div>-->
       <div class="row similar-tbody">
         <span class="col-md-1" v-for="data in allGeneData">
-          <div :class="{'special-bc':index%2!=0}" class="similar-td" v-for="(list,index) in data">{{list}}</div>
+          <div :class="{'special-bc':index%2!=0,'isLetter':/^[A-Z]+$/.test(list)}" class="similar-td" v-for="(list,index) in data">{{list}}</div>
         </span>
       </div>
 
@@ -47,10 +51,11 @@
         allGeneCount: 1,
         allGeneReset: 0,
         allGenePage: 1,
-        allGeneData:[],
-        geneTitle:'<span class="col-md-9 similar-th">A</span><span class="col-md-3 similar-th">B</span>',
-//        geneTitle:'',
-//        currentExtraData:[], //当前页面额外的数据
+        allGeneData: [],
+        currentExtraCount: 0,
+        currentExtraData: [], //当前页面额外的数据
+        firstLetter: '', //预存首字母，会被不断替换
+        respGeneData: [],
 
         current: 1,
         count: 1,
@@ -58,82 +63,86 @@
         loading: ''
       }
     },
-    mounted:function () {
+    mounted: function () {
       this.fillAllGene();
     },
     components: {
       'page': page,
     },
     methods: {
+      fillGeneNameList: function () {
+        const _vue = this;
+        let newArr = [];
+
+        $.each(_vue.respGeneData, function (i, data) {
+          const currentFirstLetter = data.substring(0, 1);
+          if (currentFirstLetter != _vue.firstLetter) {
+            _vue.firstLetter = currentFirstLetter;
+            newArr.push(currentFirstLetter);
+            newArr.push(data);
+            _vue.currentExtraCount += 1;
+          } else {
+            newArr.push(data)
+          }
+        });
+        _vue.currentExtraData = [];
+        $.each(newArr, function (key, value) {
+          if (key >= newArr.length - _vue.currentExtraCount) {
+            _vue.currentExtraData.push(value);
+          }
+        });
+        newArr.length = newArr.length - _vue.currentExtraCount;
+        _vue.allGeneData = _vue.outputs(newArr);
+        console.log(_vue.currentExtraData);
+      },
       fillAllGene: function () {
         const _vue = this;
-//        _vue.currentExtraData=[];
-        let arr = [];
+        _vue.respGeneData = [];
         let i = 0;
         while (i < 240) {
           if (i < 65) {
-            arr.push('A' + i);
-          } else if(i>=65&&i<164) {
-            arr.push('B' + i);
-          }else{
-            arr.push('C' + i);
+            _vue.respGeneData.push('A' + i);
+          } else if (i >= 65 && i < 164) {
+            _vue.respGeneData.push('B' + i);
+          } else {
+            _vue.respGeneData.push('C' + i);
           }
           i++;
         }
-        _vue.allGeneData = _vue.outputs(arr);
-//        let geneObj = {};
-//        let firstLetter = '';
-//        $.each(arr, function (i, data) {
-//          const currentFirstLetter = data.substring(0, 1);
-//          if (currentFirstLetter != firstLetter) {
-//            firstLetter = currentFirstLetter;
-//            geneObj[firstLetter] = [];
-//            geneObj[firstLetter].push(data)
-//          } else {
-//            geneObj[firstLetter].push(data)
-//          }
-//        });
+        if (_vue.currentExtraData.length !== 0) {
+          _vue.currentExtraData = _vue.currentExtraData.reverse();
+          $.each(_vue.currentExtraData, function (key, value) {
+            _vue.respGeneData.unshift(value);
+          });
+        }
 
-//        let objKeyArr = Object.keys(geneObj); //对象的key保存为数组
-//        let objValueArr = Object.values(geneObj); //对象的value保存为数组
-//        let currentExtraCount =0 ;//当前页面额外多出的数量
+        this.fillGeneNameList();
+      },
+      twoPage: function () {
+        const _vue = this;
+        _vue.respGeneData = [];
+        let i = 240;
+        while (i < 480) {
+          if (i < 305) {
+            _vue.respGeneData.push('C' + i);
+          } else {
+            _vue.respGeneData.push('D' + i);
+          }
+          i++;
+        }
 
-//        $.each(geneObj, function (key, value) {
-//          if(objKeyArr.length>1){ //当前页有多个基因的时候才处理,单个基因直接显示就好
-//            if(key == objKeyArr[objKeyArr.length-1]){
-//              if(value.length >=currentExtraCount){ //如果最后一个基因的数量就可以满足去掉额外的
-//
-//
-//                $.each(value,function (i,data) {
-//                  if(i>=value.length-currentExtraCount){
-//                    _vue.currentExtraData.push(data)
-//                  }
-//                });
-//                value.length = value.length-currentExtraCount;
-//
-//
-//              }else{
-////                _vue.currentExtraData = value;
-////                value.length = 0;
-//              }
-//            }else{
-//              let remainder = value.length % 20;
-//              currentExtraCount = 20-remainder;
-//              let i = 0;
-//              for (i;i < remainder; i++) {
-//                value.push('')
-//              }
-//            }
-//          }
-//          const colCount =value.length / 20;
-//          _vue.geneTitle+=`<span class="col-md-${colCount} similar-th">${key}</span>`;
-//          $.merge(_vue.allGeneData,_vue.outputs(value))
-//        });
+        if (_vue.currentExtraData.length !== 0) {
+          _vue.currentExtraData = _vue.currentExtraData.reverse();
+          $.each(_vue.currentExtraData, function (key, value) {
+            _vue.respGeneData.unshift(value);
+          });
+        }
+        this.fillGeneNameList();
       },
       allGeneGetCurrent: function (data) {
         this.allGenePage = data
       },
-      outputs:function (allData) {
+      outputs: function (allData) {
         /*将数组里面的值几个几个的输出*/
         if (!allData) {
           return
@@ -187,41 +196,17 @@
 //      getCurrent: function () {
 //      },
     },
-//    filter:{
-//      outputs:function (allData) {
-//        console.log(allData)
-//        /*将数组里面的值20个20个的输出*/
-//        if (!allData) {
-//          return
-//        }
-//        let arrCount = Math.ceil(allData.length / 20);
-//        let pushArr = [];
-//        while (arrCount) {
-//          pushArr.push([]);
-//          arrCount -= 1
-//        }
-//        $.each(allData, function (i, data) {
-//          i += 1;
-//          $.each(pushArr, function (k1, k2) {
-//            if (Math.ceil(i / 20) === k1 + 1) {
-//              k2.push(data)
-//            }
-//          })
-//        });
-//        $.each(pushArr, function (i, data) {
-//          if (data.length !== 20) {
-//            data.length = 20
-//          }
-//        });
-//        console.log(pushArr)
-//        return pushArr;
-//      }
-//    }
+    filter:{
+      isLetter:function (data) {
+        return /^[A-Z]+$/.test(data)
+
+      }
+    }
   }
 </script>
 
 <style scoped lang="less">
-  .gene-page {
-
+  #app #allGene{
+    box-shadow: 0 -4px 5px -3px red;
   }
 </style>
