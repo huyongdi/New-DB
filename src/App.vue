@@ -102,7 +102,7 @@
     watch: {
       '$route'(to, from) { //路由变化的时候判断需不需要加载头部
         if (from.name === 'login') {  //重新登录之后token不刷新
-          this.myAxios.headers = {'Authorization': localStorage.token};
+          this.myAxios.defaults.headers= {'Authorization': localStorage.token};
         }
       }
     },
@@ -119,6 +119,7 @@
         } else {
           this.inLogin = false;
         }
+        this.myAxios.headers = {'Authorization': localStorage.token};
         /*点击tr加背景色*/
         $("table tbody").off('click').on("click", 'tr', function () {
           if (!$(this).hasClass('not-base')) {
@@ -532,6 +533,30 @@
                   background-color: rgb(255,245,231)
                 }
               }
+            }
+          }
+        }
+        .hide-ul{
+          background-color: #fff;
+          z-index: 10;
+          max-height: 200px;
+          overflow-y: auto;
+          border-right: 1px solid #d1d1d1;
+          border-left: 1px solid #d1d1d1;
+          border-bottom: 1px solid #d1d1d1;
+          padding-left: 0;
+          position: absolute;
+          li {
+            height: 26px;
+            line-height: 26px;
+            font-size: 12px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            padding-left: 10px;
+            cursor: pointer;
+            &:hover {
+              background-color: rgb(220, 238, 249);
             }
           }
         }

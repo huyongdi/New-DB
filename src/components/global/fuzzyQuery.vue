@@ -8,13 +8,13 @@
       </div>
 
       <ul>
-        <li v-for="list in leftData" :data-key="list.key" @click="toRight(list)">{{list.value}}</li>
+        <li v-for="list in leftData" :data-key="list.key" :title="list.value" @click="toRight(list)">{{list.value}}</li>
       </ul>
     </div>
     <div class="right">
       <div class="has-title">{{title}}</div>
       <ul>
-        <li v-for="list in rightData" :data-key="list.key" @click="rightRemove(list.key)">
+        <li v-for="list in rightData" :data-key="list.key" :title="list.value" @click="rightRemove(list.key)">
           <span>{{list.value}}</span>
           <span>&times;</span>
         </li>
@@ -48,12 +48,13 @@
       },
       rightRemove: function (originalKey) {
         const _vue = this;
+        let spliceIndex = 0;
         $.each(this.rightData, function (i, data) {
-          if (originalKey === data.key) {
-            _vue.rightData.splice(i, 1);
+          if (originalKey == data.key) {
+            spliceIndex = i;
           }
         });
-
+        _vue.rightData.splice(spliceIndex, 1);
       },
       sendInput: function () {
         this.$emit('sendInput', this.fuzzyInput) //函数名和父元素的@onEnter一致

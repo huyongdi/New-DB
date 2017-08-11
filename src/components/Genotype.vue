@@ -8,79 +8,242 @@
 
     <div class="content shadow-top">
       <div class="shadow-title">输入HPO表型</div>
-      <div class="check-content">
-        <div class="single">
-          <span class="red">*</span>
-          <input type="text" placeholder="与表型相关基因(逗号隔开)" @keyup="mustKeyUp" v-model="input0">
+      <!-- <div class="check-content">
+         <div class="single">
+           <span class="red">*</span>
+           <input type="text" placeholder="与表型相关基因(逗号隔开)" @keyup="mustKeyUp" v-model="input0">
+           <div class="out-in">
+             <span class="check out-check"></span>
+             <span>关联子表型</span>
+           </div>
+           <div class="out-in">
+             <span class="out-check check"></span>
+             <span>扩展orphanet信息</span>
+           </div>
+           <ul class="hide-ul hide" id="hide-0">
+             <li v-for="list in allData0" :title="list.vHtml" @click="click0(list.hpoId)">{{list.vHtml}}</li>
+           </ul>
+         </div>
+         <div class="single">
+           <input class="left-input" type="text" placeholder="同时去除表型相关基因(选填)" @keyup="mayBKeyUp" v-model="input1">
+           <div class="out-in">
+             <span class="out-check check"></span>
+             <span>关联子表型</span>
+           </div>
+           <div class="out-in">
+             <span class="out-check check"></span>
+             <span>扩展orphanet信息</span>
+           </div>
+         </div>
+       </div>-->
+      <div class="check-content row">
+        <div class="col-md-6" id="content0">
+          <span class="title">搜索表型相关基因</span>
           <div class="out-in">
-            <span class="check out-check"></span>
+            <span id="content0-0" class="check out-check"></span>
             <span>关联子表型</span>
           </div>
           <div class="out-in">
-            <span class="out-check check"></span>
+            <span id="content0-1" class="out-check check"></span>
             <span>扩展orphanet信息</span>
           </div>
+
+          <fuzzyQuery placeholder='请输入表型' :leftData="leftData0" :rightData="originalRightData0" title="已选表型"
+                      @sendInput="receiveFuzzy0"></fuzzyQuery>
         </div>
-        <div class="single">
-          <input class="left-input" type="text" placeholder="同时去除表型相关基因(选填)" @keyup="mayBKeyUp" v-model="input1">
+
+        <div class="col-md-6" id="content1">
+          <span class="title">去除表型相关基因</span>
           <div class="out-in">
-            <span class="out-check check"></span>
+            <span id="content1-0" class="check out-check"></span>
             <span>关联子表型</span>
           </div>
           <div class="out-in">
-            <span class="out-check check"></span>
+            <span id="content1-1" class="out-check check"></span>
             <span>扩展orphanet信息</span>
           </div>
+
+          <fuzzyQuery placeholder='请输入表型' :leftData="leftData1" :rightData="originalRightData1" title="已选表型"
+                      @sendInput="receiveFuzzy1"></fuzzyQuery>
         </div>
+
       </div>
-      <span class="my-btn search-btn"><img src="../../static/img/red-con.png" alt="">搜索</span>
+      <span class="my-btn search-btn" @click="search"><img src="../../static/img/red-con.png" alt="">搜索</span>
+
+      <div class="table-content">
+        <table class="my-table">
+          <thead>
+          <tr>
+            <th>基因ID</th>
+            <th>基因名</th>
+            <th>别名</th>
+            <th>Panels</th>
+            <th>Cov5</th>
+            <th>表型</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr v-for="result in results">
+            <td>{{result.geneId}}</td>
+            <td>{{result.symbol}}</td>
+            <td>{{result.synonyms.join('|')}}</td>
+            <td>
+              <span v-if="result.panels.length !==0">            {{result.panels.join(' , ')}}</span>
+              <span v-else=""> - </span>
+            </td>
+            <td>
+              <div v-for="list in result.cov5Arr">{{list.name}}:  {{list.value | filterData}}</div>
+            </td>
+
+            <td>
+              <span class="show-hpos" v-for="hpo in result.hpos">{{hpo.hpoId}}({{hpo.titles.chinese ? hpo.titles.chinese : hpo.titles.english}})</span>
+            </td>
+          </tr>
+          <tr v-if="results.length===0">
+            <td class="center" colspan="6">暂无数据</td>
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+
     </div>
   </div>
 </template>
 
 <script>
+  import fuzzyQuery from './global/fuzzyQuery.vue'
+
   export default {
-    data:function () {
-      return{
-        loading:'',
-        input0:'',
-        input1:''
+    components: {
+      'fuzzyQuery': fuzzyQuery,
+    },
+    data: function () {
+      return {
+        loading: '',
+
+        input0: '',
+        input0Arr: [],
+        leftData0: [],
+        originalRightData0: [],
+
+        input1: '',
+        input1Arr: [],
+        leftData1: [],
+        originalRightData1: [],
+
+        results: [],
       }
     },
-    mounted:function () {
+    mounted: function () {
       this.baseInit();
     },
-    methods:{
-      baseInit:function () {
-        $(".out-in").on("click",function () {
+    methods: {
+      baseInit: function () {
+        $(".out-in").on("click", function () {
           const _check = $(this).find('.check');
-          if(_check.hasClass('out-check')){
+          if (_check.hasClass('out-check')) {
             _check.removeClass('out-check').addClass('in-check');
-          }else{
+          } else {
             _check.removeClass('in-check').addClass('out-check');
           }
         })
       },
-      mayBKeyUp:function () {
-
-      },
-      mustKeyUp:function () {
-        this.loading = true;
+      receiveFuzzy0: function (data) {
         const _vue = this;
+        this.loading = true;
         this.myAxios({
-          url:'knowledge/phenomini/?query=' + _vue.input0,
+          url: 'knowledge/phenomini/?query=' + data,
           type: 'get'
         }).then(function (resp) {
           _vue.loading = false;
           const results = resp.data;
-          console.log(results);
-          $.each(results, function (i, value) {
-
+          $.each(results, function (i, data) {
+            data.vHtml = data.hpoId + ' ' + data.titles.chinese + '(' + data.titles.english + ')';
+            _vue.leftData0.push({
+              key: data.hpoId,
+              value: data.vHtml
+            })
           });
         }).catch(function (error) {
           _vue.catchFun(error)
         });
-      }
+      },
+      receiveFuzzy1: function (data) {
+        const _vue = this;
+        this.loading = true;
+        this.myAxios({
+          url: 'knowledge/phenomini/?query=' + data,
+          type: 'get'
+        }).then(function (resp) {
+          _vue.loading = false;
+          const results = resp.data;
+          $.each(results, function (i, data) {
+            data.vHtml = data.hpoId + ' ' + data.titles.chinese + '(' + data.titles.english + ')';
+            _vue.leftData1.push({
+              key: data.hpoId,
+              value: data.vHtml
+            })
+          });
+        }).catch(function (error) {
+          _vue.catchFun(error)
+        });
+      },
+      search:function () {
+        const _vue = this;
+        this.loading = true;
+        const ajaxMust = [];
+        const ajaxOpt = [];
+
+        $("#content0").find('.fuzzy-content .right ul li').each(function (i,data) {
+          ajaxMust.push($(this).data('key'))
+        });
+        $("#content1").find('.fuzzy-content .right ul li').each(function (i,data) {
+          ajaxOpt.push($(this).data('key'))
+        });
+
+        this.myAxios({
+          url: 'knowledge/phenomini/',
+          method: 'post',
+          data: {
+            'include': ajaxMust,
+            'exclude': ajaxOpt,
+            'include_sub': $('#content0-0').hasClass('in-check'),
+            'exclude_sub': $('#content1-0').hasClass('in-check'),
+            'include_orpha':$('#content0-1').hasClass('in-check'),
+            'exclude_orpha': $('#content1-1').hasClass('in-check'),
+          }
+        }).then(function (resp) {
+          _vue.loading = false;
+          $.each(resp.data,function (i,data) {
+            data.cov5Arr = [];
+            $.each(data.cov5,function (k1,k2) {
+              data.cov5Arr.push({
+                name:k1,
+                value:k2
+              })
+            })
+          });
+          _vue.results = resp.data;
+        }).catch(function (error) {
+          _vue.catchFun(error)
+        });
+
+      },
+    },
+    filters: {
+      filterData: function (data) { //取百分比
+        if (data == 0) {
+          return 0;
+        }
+        else if(data == 1){
+          return 1
+        }else{
+          return data.toFixed(4)
+        }
+      },
     }
   }
 </script>
@@ -88,53 +251,91 @@
 <style scoped lang="less">
   #genoType-content {
     .content {
-    min-height: 450px;
+      min-height: 450px;
       margin-top: 25px;
       background-color: #fff;
+      padding-bottom: 20px;
       .check-content {
-        width: 590px;
-        margin: 40px auto;
-        >div{
-          margin-bottom: 26px;
-          .left-input{
-            margin-left: 16px;
-          }
-          .red {
-            font-family: "FZXH1JW";
-            color: rgb(238, 83, 63);
-            font-size: 18px;
-            float: left;
-            margin-top: 5px;
-            margin-right: 8px;
-          }
-          input{
-            width: 285px;
-          }
-          .out-in{
+        margin: 0 33px;
+        .title {
+          display: block;
+          margin: 10px 0 5px 0;
+        }
+        .out-in {
+          display: inline-block;
+          cursor: pointer;
+          margin-bottom: 5px;
+          margin-right: 10px;
+          .check {
             display: inline-block;
-            margin-left: 15px;
-            cursor: pointer;
-            .check{
-              display: inline-block;
-              width: 15px;
-              height: 15px;
-              background-size: 15px 15px;
-              margin-bottom: -3px;
-            }
-            .out-check{
-              background: url("../../static/img/all-2.png") 43px 0;
-            }
-            .in-check{
-              background: url("../../static/img/all-2.png") 15px 0;
-            }
+            width: 15px;
+            height: 15px;
+            background-size: 15px 15px;
+            margin-bottom: -3px;
+          }
+          .out-check {
+            background: url("../../static/img/all-2.png") 43px 0;
+          }
+          .in-check {
+            background: url("../../static/img/all-2.png") 15px 0;
           }
         }
-
       }
-      .search-btn{
+
+      /*width: 650px;*/
+      /*margin: 40px auto;*/
+      /*>div{*/
+      /*margin-bottom: 26px;*/
+      /*.left-input{*/
+      /*margin-left: 16px;*/
+      /*}*/
+      /*.red {*/
+      /*font-family: "FZXH1JW";*/
+      /*color: rgb(238, 83, 63);*/
+      /*font-size: 18px;*/
+      /*float: left;*/
+      /*margin-top: 5px;*/
+      /*margin-right: 8px;*/
+      /*}*/
+      /*input{*/
+      /*width: 345px;*/
+      /*}*/
+      /*.out-in{*/
+      /*display: inline-block;*/
+      /*margin-left: 15px;*/
+      /*cursor: pointer;*/
+      /*.check{*/
+      /*display: inline-block;*/
+      /*width: 15px;*/
+      /*height: 15px;*/
+      /*background-size: 15px 15px;*/
+      /*margin-bottom: -3px;*/
+      /*}*/
+      /*.out-check{*/
+      /*background: url("../../static/img/all-2.png") 43px 0;*/
+      /*}*/
+      /*.in-check{*/
+      /*background: url("../../static/img/all-2.png") 15px 0;*/
+      /*}*/
+      /*}*/
+      /*}*/
+      /*.single{*/
+      /*position: relative;*/
+      /*ul{*/
+      /*width: 345px;*/
+      /*left: 16px;*/
+      /*}*/
+      /*}*/
+      .search-btn {
         display: block;
         width: 95px;
         margin: 50px auto;
+      }
+      .table-content {
+        margin: 0 33px;
+        .my-table {
+          box-shadow: none;
+        }
       }
     }
   }
