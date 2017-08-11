@@ -9,33 +9,13 @@
       <search-div></search-div>
       <button @click="twoPage">产生第二页数据</button>
     </div>
-    <!--<table class="my-table">-->
-    <!--<thead>-->
-    <!--<tr>-->
-    <!--<th style="min-width: 60px">基因ID</th>-->
-    <!--<th style="">基因名</th>-->
-    <!--<th style="">别名</th>-->
-    <!--<th style="">常用转录本</th>-->
-    <!--<th style="min-width: 130px">mimNumber(基因)</th>-->
-    <!--<th style="">Panel</th>-->
-    <!--<th style="">疾病</th>-->
-    <!--<th style="">5X平均覆盖度%</th>-->
-    <!--</tr>-->
-    <!--</thead>-->
-    <!--<tbody>-->
-
-    <!--</tbody>-->
-    <!--</table>-->
-    <!--<page :childCount="count" :childReset="0" @childCurrent="getCurrent"></page>-->
 
     <div id="allGene" class='similar-table'>
-      <!--<div class="row similar-thead" v-html="geneTitle"></div>-->
       <div class="row similar-tbody">
         <span class="col-md-1" v-for="data in allGeneData">
-          <div :class="{'special-bc':index%2!=0,'isLetter':/^[A-Z]+$/.test(list)}" class="similar-td" v-for="(list,index) in data">{{list}}</div>
+          <div title="查看信息" :class="{'special-bc':index%2!=0,'isLetter':/^[A-Z]+$/.test(list)}" class="similar-td" v-for="(list,index) in data">{{list}}</div>
         </span>
       </div>
-
     </div>
 
     <page :childCount="allGeneCount" :childReset="allGeneReset" @childCurrent="allGeneGetCurrent"></page>
@@ -167,34 +147,10 @@
           }
         });
         return pushArr;
-      }
-//      geneTable: function () {
-//        let _vue = this;
-//        this.loading = true;
-//        this.list_gene = [];
-//        let url = 'knowledge/gene/?page=' + this.current;
-//        url = this.$route.query.query ? url + '&query=' + this.$route.query.query : url;
-//        this.myAxios({
-//          method: "get",
-//          url: url,
-//        }).then(function (resp) {
-//          const results = resp.data.results;
-//          _vue.count = resp.data.count;
-//          $.each(results, function (i, value) {
-//            value.synonymsStr = value.synonyms.join("|");
-//            value.cov5 = [];
-//            $.each(value.tags.cov5, function (k, data) {
-//              value.cov5.push(k + ' : ' + data);
-//            });
-//          });
-//          _vue.list_gene = results;
-//          _vue.loading = false
-//        }).catch(function (error) {
-//          _vue.catchFun(error)
-//        });
-//      },
-//      getCurrent: function () {
-//      },
+      },
+
+
+
     },
     filter:{
       isLetter:function (data) {
@@ -207,6 +163,6 @@
 
 <style scoped lang="less">
   #app #allGene{
-    box-shadow: 0 -4px 5px -3px red;
+
   }
 </style>
