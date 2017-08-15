@@ -13,7 +13,7 @@
     <div id="allGene" class='similar-table'>
       <div class="row similar-tbody">
         <span class="col-md-1" v-for="data in allGeneData">
-          <div title="查看信息" :class="{'special-bc':index%2!=0,'isLetter':/^[A-Z]+$/.test(list)}" class="similar-td" v-for="(list,index) in data">{{list}}</div>
+          <div title="查看信息" :class="{'special-bc':index%2!=0,'isLetter':/^[A-Z]+$/.test(list)}" class="similar-td" v-for="(list,index) in data" @click="toGeneD(list)">{{list}}</div>
         </span>
       </div>
     </div>
@@ -149,7 +149,9 @@
         return pushArr;
       },
 
-
+      toGeneD:function (geneID) {
+        this.$router.push({name:'geneD',query:{geneID:geneID}})
+      },
 
     },
     filter:{

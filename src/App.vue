@@ -20,6 +20,13 @@
           <!--</div>-->
           <!--</li>-->
           <leftP></leftP>
+          <li @click="toPage('/PanelC')">
+            <div class="father">
+              <span class="img task-illness"></span>
+              <span>Panel协作</span>
+              <i class="triangle"></i>
+            </div>
+          </li>
           <li @click="toPage('/genotype')">
             <div class="father">
               <span class="img task-genotype"></span>
@@ -102,7 +109,7 @@
     watch: {
       '$route'(to, from) { //路由变化的时候判断需不需要加载头部
         if (from.name === 'login') {  //重新登录之后token不刷新
-          this.myAxios.defaults.headers= {'Authorization': localStorage.token};
+          this.myAxios.defaults.headers = {'Authorization': localStorage.token};
         }
       }
     },
@@ -334,7 +341,9 @@
             display: none;
           }
         }
-
+        .f12 {
+          font-size: 12px;
+        }
         .shadow {
           border: 1px solid @tableSha;
           border-radius: 5px;
@@ -485,15 +494,15 @@
         }
         /*模拟表格样式*/
         .similar-table {
-          >div{
+          > div {
             padding: 0;
             margin: 0;
           }
           background: #fff;
           .shadow;
-          .similar-thead{
-            span{
-              background-color: rgb(230,239,245);
+          .similar-thead {
+            span {
+              background-color: rgb(230, 239, 245);
             }
             span:first-child {
               border-top-left-radius: 5px;
@@ -504,39 +513,39 @@
             span:not(:first-child) {
               border-left: 1px dashed @tdBorder;
             }
-            border-bottom: 2px solid rgb(206,219,227);
+            border-bottom: 2px solid rgb(206, 219, 227);
           }
           .similar-th, .similar-td {
             height: 26px;
             line-height: 26px;
           }
           .similar-tbody {
-            >span:not(:last-child){
+            > span:not(:last-child) {
               border-right: 1px dashed @tdBorder;
             }
-            >span{
+            > span {
               padding: 0;
-              >div{
+              > div {
                 padding-left: 15px;
                 border-bottom: 1px dashed @tdBorder;
                 cursor: pointer;
-                &:hover{
-                  background-color: rgb(255,245,231)
+                &:hover {
+                  background-color: rgb(255, 245, 231)
                 }
               }
-              >div.in{
-                background-color: rgb(255,236,210);
+              > div.in {
+                background-color: rgb(255, 236, 210);
               }
-              >div.special-bc{
-                background-color: rgb(246,248,250);
-                &:hover{
-                  background-color: rgb(255,245,231)
+              > div.special-bc {
+                background-color: rgb(246, 248, 250);
+                &:hover {
+                  background-color: rgb(255, 245, 231)
                 }
               }
             }
           }
         }
-        .hide-ul{
+        .hide-ul {
           background-color: #fff;
           z-index: 10;
           max-height: 200px;
@@ -728,7 +737,7 @@
               padding-left: 32px;
               padding-top: 32px;
               padding-bottom: 50px;
-              .shadow-title{
+              .shadow-title {
                 margin: 16px 33px 0 33px;
                 padding-bottom: 5px;
                 border-bottom: 1px solid rgb(212, 212, 212);

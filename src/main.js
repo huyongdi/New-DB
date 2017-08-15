@@ -11,17 +11,18 @@ Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
 
 Vue.prototype.loginAxios = axios.create({
-  // baseURL: 'http://118.26.69.171:8082/',
-  baseURL: 'https://biomeddb.grandbox.site/',
+  baseURL: 'http://118.26.69.171:8082/',
+//   baseURL: 'https://biomeddb.grandbox.site/',
 });
 Vue.prototype.myAxios = axios.create({
-//   baseURL: 'http://118.26.69.171:8082/',
-  baseURL: 'https://biomeddb.grandbox.site/',
+  baseURL: 'http://118.26.69.171:8082/',
+//   baseURL: 'https://biomeddb.grandbox.site/',
   headers:{'Authorization': localStorage.token}
 });
 
 /*请求地址*/
-Vue.prototype.anaUrl = 'https://analyze.grandbox.site/';
+// Vue.prototype.anaUrl = 'https://analyze.grandbox.site/';
+Vue.prototype.anaUrl = 'http://118.26.69.171:8083/';
 
 /*页面地址*/
 Vue.prototype.dbHtml = '/biomeddb/';

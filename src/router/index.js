@@ -4,8 +4,10 @@ import Router from 'vue-router'
 import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Gene from '@/components/Gene'
+import GeneD from '@/components/GeneD'
 import Genotype from '@/components/Genotype'
 import Product from '@/components/Product'
+import PanelC from '@/components/PanelC'
 import Variation from '@/components/Variation'
 
 Vue.use(Router);
@@ -28,15 +30,15 @@ export default new Router({
       component: Gene
     },
     {
+      path: '/geneD',
+      name: 'geneD',
+      component: GeneD
+    },
+    {
       path: '/genotype',
       name: 'genotype',
       component: Genotype
     },
-    // {
-    //   path: '/genotype',
-    //   name: 'genotype',
-    //   component: Genotype
-    // },
     {
       path: '/variation',
       name: 'variation',
@@ -46,6 +48,11 @@ export default new Router({
       path: '/product',
       name: 'product',
       component: Product
+    },
+    {
+      path: '/panelC',
+      name: 'panelC',
+      component: PanelC
     },
   ]
 })
