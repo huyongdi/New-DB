@@ -16,7 +16,8 @@
           <div class="col-md-6">
             <span><span class="bold">基因名：</span><span v-if="geneData.name" class="">{{geneData.name.symbol}}</span></span>
             <span><span class="bold">基因ID：</span><span class="">{{geneData.geneId}}</span></span>
-            <span><span class="bold">同义名：</span><span class="" v-if="geneData.name && geneData.name.synonyms">{{geneData.name.synonyms.join('|')}}</span></span>
+            <span><span class="bold">同义名：</span><span class="" v-if="geneData.name && geneData.name.synonyms">{{geneData.name.synonyms.join(
+              '|')}}</span></span>
             <span><span class="bold">常用转录本：</span><span class="" v-if="geneData.tags">{{geneData.tags.transcript}}</span></span>
             <span><span class="bold">mimNumber：</span><span class="" v-if="geneData.mimNumber">{{geneData.mimNumber.join('|')}}</span></span>
             <span><span class="bold">Panel：</span>
@@ -44,7 +45,8 @@
       </div>
       <div class="content-1" :class="{hide:!in1}">
         <div class="one-omim" v-for="omSingle in omimData">
-          <span><span class="bold">OMIM：</span><span class="">{{omSingle.titles.preferred}}{{omSingle.mimNumber}}({{omSingle.prefix}}{{omSingle.titles.preferred}})</span></span>
+          <span><span class="bold">OMIM：</span><span
+            class="">{{omSingle.titles.preferred}}{{omSingle.mimNumber}}({{omSingle.prefix}}{{omSingle.titles.preferred}})</span></span>
           <span><span class="bold">中文标题：</span><span class="">{{omSingle.titles.chinese}}</span></span>
           <span>
             <span class="bold">副标题：</span>
@@ -86,8 +88,17 @@
                 <td>ClinicalPhenotye</td>
                 <td>HPO</td>
               </tr>
-              <tr v-for="data in sortSyn(omSingle.clinicalSynopsis)">
-
+              <tr v-for="data in omSingle.clinicalSynopsisData">
+                <td>{{data.name}}</td>
+                <td>
+                  <div v-if="data.content" v-for="dataS in data.content">{{dataS.text}}</div>
+                </td>
+                <td>
+                  <div v-if="data.content" v-for="list in data.content"><!--getCnName(listHpo)是为了触发get函数-->
+                    <div v-if="list.hpos" v-for="listHpo in list.hpos">{{listHpo}}{{getCnName(listHpo)}}(<span :data-id="listHpo" class="hpo-cName"></span>)</div>
+                    <div v-if="!list.hpos"> - </div>
+                  </div>
+                </td>
               </tr>
               </tbody>
             </table>
@@ -118,7 +129,8 @@
           "headAndNeckNose", "headAndNeckMouth", "headAndNeckTeeth", "headAndNeckNeck", "cardiovascular",
           "cardiovascularHeart", "cardiovascularVascular", "respiratory", "respiratoryNasopharynx", "respiratoryLarynx",
           "respiratoryAirways", "respiratoryLung", "chest", "chestExternalFeatures", "chestRibsSternumClaviclesAndScapulae", "chestBreasts",
-          "chestDiaphragm", "abdomen", "abdomenExternalFeatures", "abdomenLiver", "abdomenPancreas", "abdomenBiliaryTract", "abdomenSpleen", "abdomenGastrointestinal", "genitourinary",
+          "chestDiaphragm", "abdomen", "abdomenExternalFeatures", "abdomenLiver", "abdomenPancreas", "abdomenBiliaryTract", "abdomenSpleen",
+          "abdomenGastrointestinal", "genitourinary",
           "genitourinaryExternalGenitaliaMale",
           "genitourinaryExternalGenitaliaFemale",
           "genitourinaryInternalGenitaliaMale",
@@ -159,7 +171,9 @@
           "laboratoryAbnormalities",
           "miscellaneous",
           "molecularBasis",
-        ]
+        ],
+
+        hpoArr:[]
       }
     },
     mounted: function () {
@@ -178,69 +192,22 @@
           }
           _vue.geneData = resp.data;
           _vue.location = resp.data.location.mapLocation;
+          $.each(resp.data.omims, function (k1, k2) {
+            k2.clinicalSynopsisData = _vue.sortSyn(k2.clinicalSynopsis);
+          });
           _vue.omimData = resp.data.omims;
+
           const mimNumberStr = resp.data.mimNumber.join(',');
 
-          $.each(resp.data.omims,function (i,data) {
-            data.phenotypeMapArr=[];
-            $.each(data.phenotypeMaps,function (n,value) {
-              if(mimNumberStr.includes(value.gene.mimNumber)){
+          $.each(resp.data.omims, function (i, data) {
+            data.phenotypeMapArr = [];
+            $.each(data.phenotypeMaps, function (n, value) {
+              if (mimNumberStr.includes(value.gene.mimNumber)) {
                 data.phenotypeMapArr.push(value)
               }
             })
           });
-          console.log(_vue.omimData)
           _vue.loading = false
-          /* let count3 = 0;
-           $.each(resp.data.omims, function (k3, k4) {
-             let count1 = 0;
-             let count2 = 0;
-             if ($.isEmptyObject(k4.omim.clinicalSynopsis)) {
-               k4.noClinicalSynopsis = true
-             }
-             $.each(k4.omim.clinicalSynopsis, function (n2, data2) {
-               data2.name = n2;
-               count1 += 1;
-               let count = 0; //每个data2里面的值的个数
-               $.each(data2, function (n3, data3) {
-                 data3.hpoName = '';
-                 if (data3.hpo) {
-                   _vue.$axios({
-                     method: "get",
-                     url: 'knowledge/hpo/' + data3.hpo + '/',
-                   }).then(function (resp1) {
-                     data3.hpoName = resp1.data.titles.chinese;
-                     count += 1;
-                     if (count === data2.length) {
-                       count2 += 1;
-                       if (count1 === count2) {
-                         count3 += 1;
-                         if (resp.data.phenotypeMap.length === count3) {
-                           _vue.omimData = resp.data.phenotypeMap;
-                           _vue.loading = false;
-                         }
-                       }
-                     }
-
-                   }).catch(function (error) {
-                     _vue.catchFun(error)
-                   });
-                 } else {
-                   count += 1;
-                   if (count === data2.length) {
-                     count2 += 1;
-                     if (count1 === count2) {
-                       count3 += 1;
-                       if (resp.data.phenotypeMap.length === count3) {
-                         _vue.omimData = resp.data.phenotypeMap;
-                         _vue.loading = false;
-                       }
-                     }
-                   }
-                 }
-               });
-             });
-           });*/
         }).catch(function (error) {
           _vue.catchFun(error)
         });
@@ -249,7 +216,7 @@
         let arr = [];
         let _vue = this;
         $.each(clinicalSynopsis, function (i, value) { //进来是个对象
-          if(!value){
+          if (!value) {
             return;
           }
           if (i === 'dateCreated') { //剔除数据
@@ -260,13 +227,42 @@
               value.code = k;
             }
           });
+          let arrValue = []; //用来替换value值
+          $.each(value, function (k1, k2) { //value是个对象
+            if (k2) {
+              arrValue = arrValue.concat(k2)
+            }
+          });
+          arr.push({name: i, content: arrValue})
+        });
 
-          arr.push(value)
-        });
         arr = arr.sort(function (a, b) {
-          return a.code - b.code
+          return a.content.code - b.content.code
         });
+
         return arr
+      },
+      getCnName: function (hpoId) {
+        const _vue = this;
+          _vue.myAxios({
+            url: 'knowledge/hpo/?hpoid=' + hpoId
+          }).then(function (resp) {
+            const data = resp.data.results[0];
+            const id = data.hpoId;
+            _vue.hpoArr.push({
+              hpoId:id,
+              hpoName:data.title.chinese?data.title.chinese:data.title.english
+            });
+            $('.hpo-cName').each(function () {
+              const id = $(this).data('id');
+              const _this = $(this);
+              $.each(_vue.hpoArr,function (n,value) {
+                if(value.hpoId == id){
+                  _this.html(value.hpoName)
+                }
+              })
+            })
+          });
       },
       //切换导航
       changeContent: function (event) {
@@ -284,7 +280,8 @@
 //          this.current1();
         }
       },
-    }
+    },
+    filters: {}
   }
 </script>
 
@@ -352,14 +349,14 @@
         display: block;
         padding: 0 0 20px 0;
       }
-      .database-title{
+      .database-title {
         overflow: hidden;
-        >span:first-child{
+        > span:first-child {
           float: left;
         }
-        .database-content{
+        .database-content {
           float: left;
-          >span{
+          > span {
             display: block;
           }
         }
@@ -375,8 +372,8 @@
       .my-table {
         box-shadow: none;
         border-radius: 0;
-        .tr-bc{
-          background-color: rgb(246,248,250);
+        .tr-bc {
+          background-color: rgb(246, 248, 250);
         }
       }
     }
