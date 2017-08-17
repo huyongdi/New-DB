@@ -13,20 +13,39 @@
 
       <div class="content-0" :class="{hide:!in0}">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <span><span class="bold">基因名：</span><span v-if="geneData.name" class="">{{geneData.name.symbol}}</span></span>
             <span><span class="bold">基因ID：</span><span class="">{{geneData.geneId}}</span></span>
             <span><span class="bold">同义名：</span><span class="" v-if="geneData.name && geneData.name.synonyms">{{geneData.name.synonyms.join(
               '|')}}</span></span>
             <span><span class="bold">常用转录本：</span><span class="" v-if="geneData.tags">{{geneData.tags.transcript}}</span></span>
-            <span><span class="bold">mimNumber：</span><span class="" v-if="geneData.mimNumber">{{geneData.mimNumber.join('|')}}</span></span>
+            <span class="database-title"><span class="bold">5X平均覆盖度：</span>
+               <span v-if="geneData.tags" class="database-content">
+                <span v-for="list in geneData.tags.cov5">{{list.transcript}}:{{list.value}}</span>
+               </span>
+            </span>
+
             <span><span class="bold">Panel：</span>
               <span v-for="singlePanel in geneData.panels" class="">
                 <span v-if="singlePanel.panel">{{singlePanel.panel.name_cn}}({{singlePanel.panel.code}})</span>
               </span>
             </span>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
+            <span><span class="bold">权威命名法：</span><span v-if="geneData.name" class="">{{geneData.name.symbolFna}}</span></span>
+            <span><span class="bold">权威全名：</span><span v-if="geneData.name" class="">{{geneData.name.fullnameFna}}</span></span>
+            <span><span class="bold">其他标题：</span><span v-if="geneData.name" class="">{{geneData.name.other.join('|')}}</span></span>
+            <!--<span class="database-title"><span class="bold">其他名称：</span><span v-if="geneData.name" class="database-content">-->
+              <!--<span v-for="list in geneData.name.other">{{list}}</span>-->
+            <!--</span></span>-->
+            <span><span class="bold">基因类型：</span><span class="" v-if="geneData.information">{{geneData.information.genetype}}</span></span>
+            <span><span class="bold">描述：</span><span class="" v-if="geneData.information">{{geneData.information.description}}</span></span>
+          </div>
+          <div class="col-md-4">
+            <span><span class="bold">mimNumber：</span><span class="" v-if="geneData.mimNumber">{{geneData.mimNumber.join('|')}}</span></span>
+            <span><span class="bold">chrom：</span><span class="" v-if="geneData.mimNumber">{{geneData.location.chrom}}</span></span>
+            <span><span class="bold">位置：</span><span class="" v-if="geneData.location">{{geneData.location.mapLocation}}</span></span>
+            <span><span class="bold">印记基因：</span><span class="" v-if="geneData.tags">{{geneData.tags.isImprinted ? '是' : '否'}}</span></span>
             <span class="database-title"><span class="bold">数据库：</span>
                <span v-if="geneData.dbXrefs" class="database-content">
                 <span v-if="geneData.dbXrefs.MIM">MIM：{{geneData.dbXrefs.MIM.join(',')}}</span>
@@ -36,16 +55,15 @@
                 <span v-if="geneData.dbXrefs.Ensembl">Ensembl：{{geneData.dbXrefs.Ensembl.join(',')}}</span>
                </span>
             </span>
-            <span><span class="bold">印记基因：</span><span class="" v-if="geneData.tags">{{geneData.tags.isImprinted ? '是' : '否'}}</span></span>
-            <span><span class="bold">其他名称：</span><span class="" v-if="geneData.name">{{geneData.name.fullnameFna}}</span></span>
-            <span><span class="bold">位置：</span><span class="" v-if="geneData.location">{{geneData.location.mapLocation}}</span></span>
-            <span><span class="bold">基因类型：</span><span class="" v-if="geneData.information">{{geneData.information.genetype}}</span></span>
           </div>
         </div>
       </div>
       <div class="content-1" :class="{hide:!in1}">
         <div class="one-omim" v-for="omSingle in omimData">
-          <span><span class="bold">OMIM：</span><span
+          <span><span class="bold">OMIM：</span> <span class=""><a @click="showOMIMD(omSingle.id)" class="common-a po">{{omSingle.mimNumber}}</a>({{omSingle.prefix}}
+              <span v-if="omSingle.titles">{{omSingle.titles.preferred}})</span>
+            </span><i class="fa"></i></span>
+          <span><span class="bold">标题：</span><span
             class="">{{omSingle.titles.preferred}}{{omSingle.mimNumber}}({{omSingle.prefix}}{{omSingle.titles.preferred}})</span></span>
           <span><span class="bold">中文标题：</span><span class="">{{omSingle.titles.chinese}}</span></span>
           <span>
@@ -55,6 +73,7 @@
             </span>
             <span v-else=""> - </span>
           </span>
+          <!--<span><span class="bold">文本信息：</span><a class="po common-a">点击查看</a></span>-->
           <span>
             <span class="bold">疾病信息：</span>
             <table class="my-table" v-for="phenotypeMap in omSingle.phenotypeMapArr">
@@ -172,7 +191,8 @@
           "miscellaneous",
           "molecularBasis",
         ],
-
+        omimId:'',
+        availableHPOCount:0,
         hpoArr:[]
       }
     },
@@ -192,6 +212,7 @@
           }
           _vue.geneData = resp.data;
           _vue.location = resp.data.location.mapLocation;
+          _vue.availableHPOCount=0;
           $.each(resp.data.omims, function (k1, k2) {
             k2.clinicalSynopsisData = _vue.sortSyn(k2.clinicalSynopsis);
           });
@@ -207,7 +228,6 @@
               }
             })
           });
-          _vue.loading = false
         }).catch(function (error) {
           _vue.catchFun(error)
         });
@@ -240,6 +260,17 @@
           return a.content.code - b.content.code
         });
 
+        /*计算有效hpoId数*/
+        $.each(arr,function (k3,k4) {
+          $.each(k4.content,function (k5,k6) {
+            if(k6.hpos){
+              _vue.availableHPOCount+=k6.hpos.length
+            }
+          })
+        });
+
+        console.log(_vue.availableHPOCount)
+
         return arr
       },
       getCnName: function (hpoId) {
@@ -260,9 +291,20 @@
                 if(value.hpoId == id){
                   _this.html(value.hpoName)
                 }
-              })
-            })
+              });
+            });
+
+            _vue.availableHPOCount-=1;
+            if(_vue.availableHPOCount === 0){
+              _vue.loading = false
+            }
+
           });
+      },
+
+      /*点击弹出OMIM详情*/
+      showOMIMD:function (id) {
+        this.$router.push({path:'/oMIMD',query:{id:id}})
       },
       //切换导航
       changeContent: function (event) {
@@ -344,7 +386,7 @@
     background-color: #fff;
     position: relative;
     padding: 45px;
-    .col-md-6 {
+    .col-md-4 {
       > span {
         display: block;
         padding: 0 0 20px 0;
@@ -372,9 +414,6 @@
       .my-table {
         box-shadow: none;
         border-radius: 0;
-        .tr-bc {
-          background-color: rgb(246, 248, 250);
-        }
       }
     }
   }

@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import Home from '@/components/Home'
 import Gene from '@/components/Gene'
 import GeneD from '@/components/GeneD'
+import OMIMD from '@/components/OMIMD'
 import Genotype from '@/components/Genotype'
 import Product from '@/components/Product'
 import PanelC from '@/components/PanelC'
@@ -33,6 +34,11 @@ export default new Router({
       path: '/geneD',
       name: 'geneD',
       component: GeneD
+    },
+    {
+      path: '/oMIMD',
+      name: 'oMIMD',
+      component: OMIMD
     },
     {
       path: '/genotype',

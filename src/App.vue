@@ -162,7 +162,7 @@
         /*点击其它地方筛选关闭*/
         $("#app:not('.filtrate-content')").on("click", function () {
           $('.filtrate-content').addClass('hide')
-        })
+        });
       },
     }
   }
@@ -489,6 +489,15 @@
               td {
                 border-bottom: 1px dashed @tdBorder;
               }
+            }
+          }
+        }
+        table.no-thead{
+          box-shadow: none;
+          border-radius: 0;
+          tbody{
+            tr.tr-bc {
+              background-color: rgb(246, 248, 250);
             }
           }
         }
