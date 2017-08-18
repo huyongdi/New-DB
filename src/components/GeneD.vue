@@ -135,7 +135,7 @@
   export default {
     data: function () {
       return {
-        geneId: this.$route.query.geneID,
+        geneId: this.$route.query.geneId,
         geneData: '',
         loading: true,
         in0: true,

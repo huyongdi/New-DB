@@ -1,14 +1,10 @@
 <template>
-  <div id="panel-c">
-    <loading v-show="loading"></loading>
-    <div class="title">
-      <span class="title-b">医学大数据库</span>
-      <span class="title-s">< Panel协作</span>
-    </div>
+  <div class="right-content" id="panel-c">
+    <loading v-if="loading"></loading>
+    <location imgClass="panel-small" currentPage="Panel协作"></location>
+    <button class="btn btn-color init-btn" type="button" @click="init">初始化基因列表</button>
 
-    <span class="my-btn init" @click="init"><img src="../../static/img/red-refresh.png" alt="">初始化基因列表</span>
-
-    <table class="table my-table">
+    <table class="table myTable">
       <thead>
       <tr>
         <th>基因ID</th>
@@ -22,7 +18,7 @@
       <tbody>
       <tr v-for="list in listS">
         <td>
-          <router-link class="po" target="_blank" :to="{ path: '/geneD', query: { geneId: list.gene.geneId}}">{{list.gene.geneId}}</router-link>
+          <router-link class="po" target="_blank" :to="{ path: '/geneDetail', query: { geneId: list.gene.geneId}}">{{list.gene.geneId}}</router-link>
         </td>
         <td>{{list.gene.symbol}}</td>
         <td>{{list.gene.synonyms.join('|')}}</td>
@@ -45,7 +41,7 @@
                 </a>
                 <a v-else @click="showHPO(diseaseSingle.omim.mimNumber,diseaseSingle)">{{diseaseSingle.phenotype}}</a>
                 (&nbsp;<a target="_blank"
-                          :href="dbHtml+'#/oMIMD?&id='+diseaseSingle.omim.mimNumber"
+                          :href="dbHtml+'#/geneOmDetail?&omId='+diseaseSingle.omim.mimNumber"
                           class="color-a">{{diseaseSingle.omim.mimNumber}}
               </a>&nbsp;)
 
@@ -63,7 +59,7 @@
                 </a>
                 <a v-else @click="showHPO(diseaseSingle.omim.mimNumber,diseaseSingle)">{{diseaseSingle.phenotype}}</a>
                 (&nbsp;<a target="_blank"
-                          :href="dbHtml+'#/oMIMD?&id='+diseaseSingle.omim.mimNumber"
+                          :href="dbHtml+'#/geneOmDetail?&omId='+diseaseSingle.omim.mimNumber"
                           class="color-a">{{diseaseSingle.omim.mimNumber}}</a>&nbsp;)
               </div>
             </div>
@@ -72,7 +68,7 @@
         </td>
         <td>
           <a v-if="list.panelsInfo.length != 0" v-for="panelItem in list.panelsInfo" class="block po" @click="changePanel(list.id)">
-            {{panelItem.name}}
+          {{panelItem.name}}
           </a>
           <a v-if="list.panelsInfo.length == 0" @click="changePanel(list.id)" class="po change-panel">修改panel</a>
         </td>
@@ -83,7 +79,7 @@
       </tbody>
     </table>
 
-    <page :childCount="count" :childReset="reset" @childCurrent="getCurrent"></page>
+    <pagenation :count="count" :reset="reset" @getCurrent="getCurrent"></pagenation>
 
     <!--查看HPO的模态框-->
     <div class="modal fade  bs-example-modal-lg" tabindex="-1" id="hpo_detail" role="dialog"
@@ -130,8 +126,6 @@
         </div>
       </div>
     </div>
-
-    <hpoModal :phenotypeMapSingle="phenotypeMapSingle"></hpoModal>
 
     <!--点击修改panel的模态框-->
     <div class="modal fade " aria-labelledby="gridSystemModalLabe5" tabindex="-1" role="dialog" id="editGeneModal1">
@@ -189,18 +183,21 @@
       </div>
     </div>
 
+
   </div>
 </template>
 
 <script>
-  import page from './global/Page.vue'
-  import hpoModal from './global/HpoModal.vue'
+  import topLocation from './global/location'
+  import search from './global/search'
+  import pagenation from './global/pagenation'
   import fuzzyQuery from './global/fuzzyQuery.vue'
 
   export default {
     components: {
-      'page': page,
-      'hpoModal': hpoModal,
+      'location': topLocation,
+      'search': search,
+      'pagenation': pagenation,
       'fuzzyQuery': fuzzyQuery,
     },
     data: function () {
@@ -212,23 +209,21 @@
 
         originalPanelData: [],
         panelData: [],
-        infoData: [],
+        infoData:[],
 
         count: 1,
         current: 1,
-        reset: 0,
-
-        phenotypeMapSingle:'',
+        reset: 0
       }
     },
     created: function () {
       this.getList();
-      this.getAllPanel(); //模糊搜索的所有结果先填充好
+      this.getAllPanel();
     },
     methods: {
-      getAllPanel: function () {
+      getAllPanel:function () {
         const _vue = this;
-        this.myAxios({
+        this.$axios({
           url: 'product/newpanel/'
         }).then(function (resp) {
           _vue.panelData = [];
@@ -246,7 +241,7 @@
       getList: function () {
         const _vue = this;
         _vue.loading = true;
-        this.myAxios({
+        this.$axios({
           url: 'product/panelgene/?page=' + _vue.current
         }).then(function (resp) {
           _vue.count = resp.data.count;
@@ -257,7 +252,7 @@
             genePostData.push(value.gene.geneId);
           });
           _vue.listS = resp.data.results;
-          _vue.myAxios({
+          _vue.$axios({
             url: 'knowledge/gene/dictbygeneids/',
             method: 'post',
             data: {
@@ -292,19 +287,6 @@
         this.current = data;
         this.reset = 0;
         this.getList();
-      },
-
-      init: function () {
-        const _vue = this;
-        _vue.loading = true;
-        this.myAxios({
-          url: 'product/panelgene/init/'
-        }).then(function (resp) {
-          _vue.loading = false;
-          alert(resp.data.detail);
-        }).catch(function (error) {
-          _vue.catchFun(error)
-        })
       },
 
       /*查看每个人弹框*/
@@ -386,18 +368,116 @@
 
       /*疾病弹框*/
       showHPO: function (id, data) {
-        this.phenotypeMapSingle = data;
+        this.loading = !$.isEmptyObject(data.omim.clinicalSynopsis);
         $("#hpo_detail").modal("show");
+        this.clinicalSynopsis = [];
+        const _vue = this;
+        let count = 0;
+        let count1 = 0;
+        $.each(data.omim.clinicalSynopsis, function (n2, data2) {
+          count += 1; //对象里面的key个数
+          data2.name = n2;
+          let data2Length = 0;
+          $.each(data2, function (n3, data3) {
+            if (data3.hpo) {
+              _vue.$axios({
+                method: "get",
+                url: 'knowledge/hpo/' + data3.hpo + '/',
+              }).then(function (resp) {
+                data3.hpoName = resp.data.titles.chinese;
+                data2Length += 1;
+                if (data2Length === data2.length) {
+                  _vue.clinicalSynopsis.push(data2);
+                  count1 += 1;
+                  if (count1 === count) {
+                    _vue.loading = false;
+                  }
+                }
+              }).catch(function () {
+                data2Length += 1;
+                if (data2Length === data2.length) {
+                  _vue.clinicalSynopsis.push(data2);
+                  count1 += 1;
+                  if (count1 === count) {
+                    _vue.loading = false;
+                  }
+                }
+              });
+            } else {
+              data2Length += 1;
+              if (data2Length === data2.length) {
+                _vue.clinicalSynopsis.push(data2);
+                count1 += 1;
+                if (count1 === count) {
+                  _vue.loading = false;
+                }
+              }
+            }
+          });
+        });
       },
+      sortSyn: function (clinicalSynopsis) {
+        let arr = [];
+        let _vue = this;
+        $.each(clinicalSynopsis, function (i, value) {
+          if (value.name === 'dateCreated') { //剔除数据
+            return;
+          }
+          $.each(_vue.sortArr, function (k, data) {
+            if (value.name === data) {
+              value.code = k;
+            }
+          });
+          arr.push(value)
+        });
+        arr = arr.sort(function (a, b) {
+          return a.code - b.code
+        });
+        return arr
+      },
+      init: function () {
+        const _vue = this;
+        _vue.loading = true;
+        this.$axios({
+          url: 'product/panelgene/init/'
+        }).then(function (resp) {
+          _vue.loading = false;
+          alert(resp.data.detail);
+        }).catch(function (error) {
+          _vue.catchFun(error)
+        })
+      }
     }
   }
 </script>
 
 <style scoped lang="less">
   #panel-c {
-    .init {
-      width: 140px;
-      margin-top: 15px;
+    .init-btn.focus, .init-btn:focus, .init-btn:hover {
+      color: #fff;
+    }
+    .init-btn {
+      margin-top: 10px;
+      margin-left: 100px;
+      margin-bottom: 10px;
+    }
+    .change-panel{
+      color: red;
+    }
+    #people-modal{
+      .single{
+        margin-bottom: 25px;
+        .name{
+          font-size: 18px;
+          font-weight: bold;
+        }
+        .content{
+          padding-left: 60px;
+          margin-top: 5px;
+        }
+      }
+
     }
   }
+
 </style>

@@ -150,7 +150,7 @@
       },
 
       toGeneD:function (geneID) {
-        this.$router.push({name:'geneD',query:{geneID:geneID}})
+        this.$router.push({name:'geneD',query:{geneId:geneID}})
       },
 
     },

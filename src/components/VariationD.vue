@@ -353,7 +353,7 @@
       })
     },
     methods: {
-      dbfreq: function () {
+      dbfreq: function () { /*德系犹太人*/
         let mtdb_data;
         let exac_data = this.basicResp.freq.exac ? this.basicResp.freq.exac : {
           "all": 0, //ExAC所有人群频率
@@ -381,7 +381,34 @@
         let grandFreq = this.basicResp.freq.grandfreq ? this.basicResp.freq.grandfreq : 0;
 //        mtdb_data = this.basicResp.mito && this.basicResp.mito.mtdb ? this.basicResp.mito.mtdb : 0;
         mtdb_data = this.basicResp.freq.mtdb ? this.basicResp.freq.mtdb : 0;
+
+        /*gnomad外显子和基因组*/
+        let gnomadExome_data = this.basicResp.freq.gnomad.exome?this.basicResp.freq.gnomad.exome:{
+          "all": 0.0, //gnomad外显子所有人群频率
+          "afr": 0.0, //gnomad外显子非洲人群频率
+          "amr": 0.0, //gnomad外显子美州人群频率
+          "asj": 0.0, //gnomad外显子阿什肯纳兹犹太人
+          "eas": 0.0, //gnomad外显子东亚人群频率
+          "fin": 0.0,//gnomad外显子芬兰人群频率
+          "nfe": 0.0,//gnomad外显子非芬兰欧洲人群频率
+          "oth": 0.0,//gnomad外显子其他人群频率
+          "sas": 0.0//gnomad外显子南亚人群频率
+        };
+        let gnomadGenome_data = this.basicResp.freq.gnomad.exome?this.basicResp.freq.gnomad.exome:{
+          "all": 0.0, //gnomad外显子所有人群频率
+          "afr": 0.0, //gnomad外显子非洲人群频率
+          "amr": 0.0, //gnomad外显子美州人群频率
+          "asj": 0.0, //gnomad外显子阿什肯纳兹犹太人
+          "eas": 0.0, //gnomad外显子东亚人群频率
+          "fin": 0.0,//gnomad外显子芬兰人群频率
+          "nfe": 0.0,//gnomad外显子非芬兰欧洲人群频率
+          "oth": 0.0,//gnomad外显子其他人群频率
+        };
+
         this.dataBaseCharts('frequency-chart', {
+          grid:{
+            bottom:200
+          },
           tooltip: {
             trigger: 'axis'
           },
@@ -389,11 +416,16 @@
           xAxis: [
             {
               type: 'category',
-              axisLabel: {rotate: -30, 'interval': 0},
+              axisLabel: {rotate: -60, 'interval': 0},
               data: [{
                 value: '本地',
-                textStyle: {color: 'red'}
-              }, {
+                textStyle: {color: 'red',fontSize:'12'}
+              },
+                'gnomAD外显子所有人群频率','gnomAD外显子非洲人群频率','gnomAD外显子美州人群频率','gnomAD外显子阿什肯纳兹犹太人','gnomAD外显子东亚人群频率',
+                'gnomAD外显子芬兰人群频率','gnomAD外显子非芬兰欧洲人群频率','gnomAD外显子其他人群频率','gnomAD外显子南亚人群频率',
+                'gnomAD基因组所有人群频率','gnomAD基因组非洲人群频率','gnomAD基因组美州人群频率','gnomAD基因组阿什肯纳兹犹太人','gnomAD基因组东亚人群频率',
+                'gnomAD基因组芬兰人群频率','gnomAD基因组非芬兰欧洲人群频率','gnomAD基因组其他人群频率','gnomAD基因组南亚人群频率',
+                {
                 value: 'ExAC东亚',
                 textStyle: {color: 'red'}
               }, '\nExAC所有', 'ExAC非洲', '\nExAC美洲', 'ExAC南亚', '\nExAC芬兰', 'ExAC非芬兰欧洲', '\nExAC其他',
@@ -404,14 +436,15 @@
                 'ESP6500si所有', '\nESP6500si_AA', 'ESP6500si_EE', {
                   value: 'MTDB',
                   textStyle: {color: 'red'}
-                },
+                }
               ]
             }
           ],
+
           yAxis: [
             {
               type: 'value',
-              name: '频率(%)'
+              name: '频率(%)',
             }
           ],
           series: [
@@ -421,6 +454,26 @@
               data: [
                 /*本地*/
                 {value: this.filterData(grandFreq.freq), itemStyle: {normal: {color: '#258dc1'}}},
+                /*gnomAD*/
+                {value: this.filterData(gnomadExome_data.all), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadExome_data.afr), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadExome_data.amr), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadExome_data.asj), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadExome_data.eas), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadExome_data.fin), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadExome_data.nfe), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadExome_data.oth), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadExome_data.sas), itemStyle: {normal: {color: '#258dc1'}}},
+
+                {value: this.filterData(gnomadGenome_data.all), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadGenome_data.afr), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadGenome_data.amr), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadGenome_data.asj), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadGenome_data.eas), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadGenome_data.fin), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadGenome_data.nfe), itemStyle: {normal: {color: '#258dc1'}}},
+                {value: this.filterData(gnomadGenome_data.oth), itemStyle: {normal: {color: '#258dc1'}}},
+
                 /*EXAC*/
                 {value: this.filterData(exac_data.eas), itemStyle: {normal: {color: '#258dc1'}}},
                 {value: this.filterData(exac_data.all), itemStyle: {normal: {color: '#258dc1'}}},
@@ -441,6 +494,8 @@
                 {value: this.filterData(esp_data.aa), itemStyle: {normal: {color: '#258dc1'}}},
                 {value: this.filterData(esp_data.ea), itemStyle: {normal: {color: '#258dc1'}}},
                 {value: this.filterData(mtdb_data), itemStyle: {normal: {color: '#258dc1'}}}
+
+
               ],
               markLine: {
                 data: [{
@@ -615,8 +670,8 @@
         overflow: hidden;
         .frequency-chart {
           width: 100%;
-          height: 400px;
-          overflow-x: hidden;
+          height: 500px;
+          overflow-x: auto;
           overflow-y: hidden;
         }
         #mit-chart {
