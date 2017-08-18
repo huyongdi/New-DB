@@ -10,6 +10,7 @@ import Genotype from '@/components/Genotype'
 import Product from '@/components/Product'
 import PanelC from '@/components/PanelC'
 import Variation from '@/components/Variation'
+import VariationD from '@/components/VariationD'
 
 Vue.use(Router);
 
@@ -49,6 +50,11 @@ export default new Router({
       path: '/variation',
       name: 'variation',
       component: Variation
+    },
+    {
+      path: '/variationD',
+      name: 'variationD',
+      component: VariationD
     },
     {
       path: '/product',

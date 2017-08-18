@@ -8,34 +8,6 @@
 
     <div class="content shadow-top">
       <div class="shadow-title">输入HPO表型</div>
-      <!-- <div class="check-content">
-         <div class="single">
-           <span class="red">*</span>
-           <input type="text" placeholder="与表型相关基因(逗号隔开)" @keyup="mustKeyUp" v-model="input0">
-           <div class="out-in">
-             <span class="check out-check"></span>
-             <span>关联子表型</span>
-           </div>
-           <div class="out-in">
-             <span class="out-check check"></span>
-             <span>扩展orphanet信息</span>
-           </div>
-           <ul class="hide-ul hide" id="hide-0">
-             <li v-for="list in allData0" :title="list.vHtml" @click="click0(list.hpoId)">{{list.vHtml}}</li>
-           </ul>
-         </div>
-         <div class="single">
-           <input class="left-input" type="text" placeholder="同时去除表型相关基因(选填)" @keyup="mayBKeyUp" v-model="input1">
-           <div class="out-in">
-             <span class="out-check check"></span>
-             <span>关联子表型</span>
-           </div>
-           <div class="out-in">
-             <span class="out-check check"></span>
-             <span>扩展orphanet信息</span>
-           </div>
-         </div>
-       </div>-->
       <div class="check-content row">
         <div class="col-md-6" id="content0">
           <span class="title">搜索表型相关基因</span>
@@ -43,10 +15,10 @@
             <span id="content0-0" class="check out-check"></span>
             <span>关联子表型</span>
           </div>
-          <div class="out-in">
-            <span id="content0-1" class="out-check check"></span>
-            <span>扩展orphanet信息</span>
-          </div>
+          <!--<div class="out-in">-->
+            <!--<span id="content0-1" class="out-check check"></span>-->
+            <!--<span>扩展orphanet信息</span>-->
+          <!--</div>-->
 
           <fuzzyQuery placeholder='请输入表型' :leftData="leftData0" :rightData="originalRightData0" title="已选表型"
                       @sendInput="receiveFuzzy0"></fuzzyQuery>
@@ -58,16 +30,27 @@
             <span id="content1-0" class="check out-check"></span>
             <span>关联子表型</span>
           </div>
-          <div class="out-in">
-            <span id="content1-1" class="out-check check"></span>
-            <span>扩展orphanet信息</span>
-          </div>
+          <!--<div class="out-in">-->
+            <!--<span id="content1-1" class="out-check check"></span>-->
+            <!--<span>扩展orphanet信息</span>-->
+          <!--</div>-->
 
           <fuzzyQuery placeholder='请输入表型' :leftData="leftData1" :rightData="originalRightData1" title="已选表型"
                       @sendInput="receiveFuzzy1"></fuzzyQuery>
         </div>
 
+        <div class="content-op">
+          <div class="out-in">
+            <span id="content-op" class="out-check check"></span>
+            <span>扩展orphanet信息</span>
+          </div>
+        </div>
+
+
       </div>
+
+
+
       <span class="my-btn search-btn" @click="search"><img src="../../static/img/red-con.png" alt="">搜索</span>
 
       <div class="table-content">
@@ -208,12 +191,10 @@
           url: 'knowledge/phenomini/',
           method: 'post',
           data: {
-            'include': ajaxMust,
-            'exclude': ajaxOpt,
-            'include_sub': $('#content0-0').hasClass('in-check'),
-            'exclude_sub': $('#content1-0').hasClass('in-check'),
-            'include_orpha':$('#content0-1').hasClass('in-check'),
-            'exclude_orpha': $('#content1-1').hasClass('in-check'),
+            'includes': ajaxMust,
+            'excludes': ajaxOpt,
+            'children':[$('#content0-0').hasClass('in-check'),$('#content1-0').hasClass('in-check')],
+            'orpha':$("#content-op").hasClass('in-check')
           }
         }).then(function (resp) {
           _vue.loading = false;
@@ -255,30 +236,36 @@
       margin-top: 25px;
       background-color: #fff;
       padding-bottom: 20px;
+      .out-in {
+        display: inline-block;
+        cursor: pointer;
+        margin-bottom: 5px;
+        margin-right: 10px;
+        .check {
+          display: inline-block;
+          width: 15px;
+          height: 15px;
+          background-size: 15px 15px;
+          margin-bottom: -3px;
+        }
+        .out-check {
+          background: url("../../static/img/all-2.png") 43px 0;
+        }
+        .in-check {
+          background: url("../../static/img/all-2.png") 15px 0;
+        }
+      }
+      .content-op{
+        clear: both;
+        width: 100%;
+        text-align: center;
+        padding-top: 20px;
+      }
       .check-content {
         margin: 0 33px;
         .title {
           display: block;
           margin: 10px 0 5px 0;
-        }
-        .out-in {
-          display: inline-block;
-          cursor: pointer;
-          margin-bottom: 5px;
-          margin-right: 10px;
-          .check {
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            background-size: 15px 15px;
-            margin-bottom: -3px;
-          }
-          .out-check {
-            background: url("../../static/img/all-2.png") 43px 0;
-          }
-          .in-check {
-            background: url("../../static/img/all-2.png") 15px 0;
-          }
         }
       }
 
