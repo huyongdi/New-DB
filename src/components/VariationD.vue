@@ -150,7 +150,7 @@
           <div><span class="pull-left">CLNDSDBS:</span>
             <div class="clnd-conten pull-left">
               <div v-if="clinvarData.clndsdbs" v-for="list in clinvarData.clndsdbs">
-                <div>{{list|objToArr}}</div>
+                <div v-html="objToArr(list)"></div>
               </div>
             </div>
 
@@ -165,9 +165,9 @@
         <span class="gene-information-title">GWAS（2015-01-21）</span>
         <div class="gene-content">
           <div class="row">
-            <span class="col-lg-4">disease: {{gwasData.disease?gwasData.disease:'-'}}</span>
-            <span class="col-lg-4">orVal: {{gwasData.orVal?gwasData.orVal:'-'}}</span>
-            <span class="col-lg-4">beta: {{gwasData.beta?gwasData.beta:'-'}}</span>
+            <span class="col-lg-4">disease: {{gwasData.disease ? gwasData.disease : '-'}}</span>
+            <span class="col-lg-4">orVal: {{gwasData.orVal ? gwasData.orVal : '-'}}</span>
+            <span class="col-lg-4">beta: {{gwasData.beta ? gwasData.beta : '-'}}</span>
           </div>
           <div class="row">
             <span class="col-lg-4">
@@ -182,8 +182,8 @@
               </span>
               <span v-else=""> - </span>
             </span>
-            <span class="col-lg-4">rsid: {{gwasData.rsid?gwasData.rsid:'-'}}</span>
-            <span class="col-lg-4">pVal: {{gwasData.pVal?gwasData.pVal:'-'}}</span>
+            <span class="col-lg-4">rsid: {{gwasData.rsid ? gwasData.rsid : '-'}}</span>
+            <span class="col-lg-4">pVal: {{gwasData.pVal ? gwasData.pVal : '-'}}</span>
           </div>
         </div>
       </div>
@@ -565,6 +565,14 @@
         }
       },
 
+      objToArr: function (obj) {
+        let str = '';
+        $.each(obj, function (key, value) {
+          str += key + ': ' + value+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+        });
+        return str;
+      },
+
       filterData: function (data) { //为0输出0，不存在输出-
         if (data === 0) {
           return 0;
@@ -576,8 +584,12 @@
       }
     },
     filters: {
-      objToArr:function (obj) {
-        return obj;
+      objToArr: function (obj) {
+        let str = '';
+        $.each(obj, function (key, value) {
+          str += key + ': ' + value+'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'
+        });
+        return str;
       },
 //      filterData1: function (data) { //为0输出0，不存在输出-
 //        if (data === 0) {
