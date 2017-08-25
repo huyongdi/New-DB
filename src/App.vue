@@ -190,17 +190,28 @@
     padding: 0;
     /*overflow-x: hidden;*/
     body {
-      background: url("../static/img/html-bc.png");
+      /*background: url("../static/img/html-bc.png");*/
+      /*background-size: 100% 100%;*/
       /*background:linear-gradient(to bottom,#e9e9e9,#fafafa);*/
+      background-color: #f5f5f5;
       min-height: 100%;
       width: 100%;
       margin: 0;
       padding: 0;
       font-family: "AdobeHeitiStd";
-      background-size: 100% 100%;
       #app {
         min-height: 100%;
         /*自定义class*/
+        .base-color { /*标题背景底色*/
+          display: block;
+          padding: 8px 10px;
+          margin-left: -10px;
+          background-color: rgb(245, 245, 245);
+        }
+        .light-font { /*浅字体*/
+          font-size: 13px;
+          color: rgb(125, 125, 125);
+        }
         .span-a {
           color: #337ab7;
           cursor: pointer;
@@ -486,11 +497,17 @@
             tr.in {
               background-color: @trIn;
             }
-           /* tr:not(:last-child) {
+            tr:last-child {
               td {
-                border-bottom: 1px dashed @tdBorder;
+                border-bottom: none;
               }
-            }*/
+              td:first-child {
+                border-bottom-left-radius: 5px;
+              }
+              td:last-child {
+                border-bottom-right-radius: 5px;
+              }
+            }
           }
         }
         table.no-thead{
@@ -544,11 +561,13 @@
               padding: 0;
               > div {
                 padding-left: 15px;
-                border-bottom: 1px dashed @tdBorder;
                 cursor: pointer;
                 &:hover {
                   background-color: rgb(255, 245, 231)
                 }
+              }
+              >div:not(:last-child){
+                border-bottom: 1px dashed @tdBorder;
               }
               > div.in {
                 background-color: rgb(255, 236, 210);
@@ -558,6 +577,17 @@
                 &:hover {
                   background-color: rgb(255, 245, 231)
                 }
+              }
+            }
+            /*左下角和右下角div*/
+            >span:first-child{
+              >div:last-child{
+                border-bottom-left-radius: 5px;
+              }
+            }
+            >span:last-child{
+              >div:last-child{
+                border-bottom-right-radius: 5px;
               }
             }
           }
@@ -651,6 +681,7 @@
                 cursor: pointer;
               }
               li.active {
+                background-color: #fff;
                 .father {
                   .triangle {
                     opacity: 1;
@@ -748,12 +779,15 @@
               border-left: 1px solid rgb(211, 212, 212);
               display: inline-block;
               /*float: left;*/
-              width: calc(~'100vw - 300px');
+              width: calc(~'100vw - 285px');
               min-width: 1100px;
               min-height: calc(~'100vh - 58px');
               padding-left: 32px;
               padding-top: 32px;
               padding-bottom: 50px;
+              background: url("../static/img/html-bc.png");
+              /*background-position: -60px 0;*/
+              background-size: 100% auto;
               .shadow-title {
                 margin: 16px 33px 0 33px;
                 padding-bottom: 5px;

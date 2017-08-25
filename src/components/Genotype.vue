@@ -68,19 +68,18 @@
 
           <tbody>
           <tr v-for="result in results">
-            <td>{{result.geneId}}</td>
-            <td>{{result.symbol}}</td>
-            <td>{{result.synonyms.join('|')}}</td>
+            <td>{{result.gene.geneId}}</td>
+            <td>{{result.gene.name.symbol}}</td>
+            <td>{{result.gene.name.synonyms.join('|')}}</td>
             <td>
-              <span v-if="result.panels.length !==0">            {{result.panels.join(' , ')}}</span>
+              <span v-if="result.panels.length !==0">{{result.panels.join(' , ')}}</span>
               <span v-else=""> - </span>
             </td>
             <td>
-              <div v-for="list in result.cov5Arr">{{list.name}}:  {{list.value | filterData}}</div>
+              <div v-for="list in result.gene.tags.cov5">{{list.transcript}}:  {{list.value | filterData}}</div>
             </td>
-
             <td>
-              <span class="show-hpos" v-for="hpo in result.hpos">{{hpo.hpoId}}({{hpo.titles.chinese ? hpo.titles.chinese : hpo.titles.english}})</span>
+              <span class="show-hpos" v-for="hpo in result.hpos">{{hpo.info.hpoId}}({{hpo.info.title.chinese ? hpo.info.title.chinese : hpo.info.title.english}})</span>
             </td>
           </tr>
           <tr v-if="results.length===0">
@@ -198,15 +197,7 @@
           }
         }).then(function (resp) {
           _vue.loading = false;
-          $.each(resp.data,function (i,data) {
-            data.cov5Arr = [];
-            $.each(data.cov5,function (k1,k2) {
-              data.cov5Arr.push({
-                name:k1,
-                value:k2
-              })
-            })
-          });
+
           _vue.results = resp.data;
         }).catch(function (error) {
           _vue.catchFun(error)

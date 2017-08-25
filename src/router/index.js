@@ -12,6 +12,9 @@ import PanelC from '@/components/PanelC'
 import Variation from '@/components/Variation'
 import VariationD from '@/components/VariationD'
 
+
+import Test from '@/components/Test'
+
 Vue.use(Router);
 
 export default new Router({
@@ -65,6 +68,11 @@ export default new Router({
       path: '/panelC',
       name: 'panelC',
       component: PanelC
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: Test
     },
   ]
 })

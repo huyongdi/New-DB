@@ -9,21 +9,21 @@
     <div class="shadow-top bc-fff">
 
       <div class="gene-information">
-        <span class="gene-information-title">基本信息</span>
+        <span class="gene-information-title base-color">基本信息</span>
         <div class="gene-content">
           <span>变异：{{basicResp.chrom}}:{{basicResp.start}}-{{basicResp.end}}({{basicResp.ref}}/{{basicResp.alt}})</span>
         </div>
       </div>
 
       <div class="gene-information">
-        <span class="gene-information-title">人群频率</span>
+        <span class="gene-information-title base-color">人群频率</span>
         <div class="gene-content">
           <div class="frequency-chart" id="frequency-chart"></div>
         </div>
       </div>
 
       <div class="gene-information">
-        <span class="gene-information-title">DBnsfp</span>
+        <span class="gene-information-title base-color">DBnsfp</span>
         <div class="gene-content row">
           <div class="col-md-6" id="mit-chart"></div>
           <div class="col-md-6">
@@ -74,7 +74,7 @@
       </div>
 
       <div class="gene-information">
-        <span class="gene-information-title">HGMD（2014-2）</span>
+        <span class="gene-information-title base-color">HGMD（2014-2）</span>
         <div class="gene-content">
           <table class="my-table no-thead">
             <tbody>
@@ -135,7 +135,7 @@
       </div>
 
       <div class="gene-information">
-        <span class="gene-information-title">Clinvar（2017-01-30）</span>
+        <span class="gene-information-title base-color">Clinvar（2017-01-30）</span>
         <div class="gene-content">
           <div>CLNACC:
             <span v-if="clinvarData.clnacc">
@@ -162,7 +162,7 @@
       </div>
 
       <div class="gene-information">
-        <span class="gene-information-title">GWAS（2015-01-21）</span>
+        <span class="gene-information-title base-color">GWAS（2015-01-21）</span>
         <div class="gene-content">
           <div class="row">
             <span class="col-lg-4">disease: {{gwasData.disease ? gwasData.disease : '-'}}</span>
@@ -189,7 +189,7 @@
       </div>
 
       <div class="gene-information">
-        <span class="gene-information-title">线粒体</span>
+        <span class="gene-information-title base-color">线粒体</span>
         <div class="gene-content">
           <table class="my-table no-thead">
             <tbody>
@@ -279,7 +279,7 @@
       </div>
 
       <div class="gene-information">
-        <span class="gene-information-title">剪切区域</span>
+        <span class="gene-information-title base-color">剪切区域</span>
         <div class="gene-content">
           <div class="one">
             <div class="one-title">dbscSNV</div>

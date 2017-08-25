@@ -1,6 +1,7 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
+import Vuex from 'vuex'
 import App from './App'
 import router from './router'
 import axios from 'axios'
@@ -9,6 +10,8 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 Vue.prototype.$axios = axios;
 Vue.config.productionTip = false;
+
+Vue.use(Vuex);
 
 Vue.prototype.loginAxios = axios.create({
   baseURL: 'http://118.26.69.171:8082/',
@@ -59,8 +62,8 @@ Vue.prototype.catchFun = function (error) {
     alert(error.response.status + ' : ' + alertContent);
     if (error.response.status === 401) {
       if (this.$route.name !== 'login') {
-        // localStorage.token = '';
-        // this.$router.push({path: '/?next=' + this.$route.path})  暂时去掉这行
+         localStorage.token = '';
+         this.$router.push({path: '/?next=' + this.$route.path})
       }
     }
   } else {

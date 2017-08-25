@@ -6,21 +6,21 @@
     <div class="content">
       <div class="row topRow">
         <div class="col-md-4">
-          <img src="../../static/img/home-1.jpg" alt="">
+          <img src="../../static/img/home-1.png" alt="">
           <div class="right">
             <div class="right-title">基因</div>
             <div class="remark">整合基因、疾病与有效标记数据库</div>
           </div>
         </div>
         <div class="col-md-4">
-          <img src="../../static/img/home-2.jpg" alt="">
+          <img src="../../static/img/home-2.png" alt="">
           <div class="right">
             <div class="right-title">疾病</div>
             <div class="remark">收录了~余种人类常见遗传性疾病、先天性畸形疾病等性状</div>
           </div>
         </div>
         <div class="col-md-4">
-          <img src="../../static/img/home-6.jpg" alt="">
+          <img src="../../static/img/home-6.png" alt="">
           <div class="right">
             <div class="right-title">产品</div>
             <div class="remark">基因诊断模块设计与标记筛选</div>
@@ -30,14 +30,14 @@
 
       <div class="row topRow">
         <div class="col-md-4">
-          <img src="../../static/img/home-5.jpg" alt="">
+          <img src="../../static/img/home-5.png" alt="">
           <div class="right">
             <div class="right-title">表型分析</div>
             <div class="remark">对表型的分类、管理、注释、检索等</div>
           </div>
         </div>
         <div class="col-md-4">
-          <img src="../../static/img/home-4.jpg" alt="">
+          <img src="../../static/img/home-4.png" alt="">
           <div class="right">
             <div class="right-title">HPOBOX</div>
             <div class="remark">中文HPO数据库</div>
