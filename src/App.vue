@@ -147,8 +147,12 @@
           const _children = _currentLi.find('.children');
           if (_currentLi.hasClass('active')) {
             _currentLi.removeClass('active')
+            _currentLi.find('.children').slideToggle();
+
           } else {
             _currentLi.addClass('active');
+            _currentLi.find('.children').slideToggle();
+
           }
         });
         /*自定义的上传输入框*/
@@ -689,27 +693,27 @@
                   border-right: 1px solid @triangle-color;
                   color: @in;
                 }
-                .children {
-                  display: block;
-                }
+                /*.children {*/
+                  /*display: block;*/
+                /*}*/
                 /*左侧导航图标*/
                 .task-gene {
-                  background: url(../static/img/all-1.png) 18px 158px;
+                  background: url(../static/img/all-1.png) 16px 158px;
                 }
                 .task-illness {
-                  background: url(../static/img/all-1.png) 18px 133px;
+                  background: url(../static/img/all-1.png) 16px 133px;
                 }
                 .task-product {
-                  background: url(../static/img/all-1.png) 18px 105px;
+                  background: url(../static/img/all-1.png) 16px 105px;
                 }
                 .task-genotype {
-                  background: url(../static/img/all-1.png) 18px 80px;
+                  background: url(../static/img/all-1.png) 16px 80px;
                 }
                 .task-hpo {
-                  background: url(../static/img/all-1.png) 18px 52px;
+                  background: url(../static/img/all-1.png) 16px 52px;
                 }
                 .task-variation {
-                  background: url(../static/img/all-1.png) 18px 25px;
+                  background: url(../static/img/all-1.png) 16px 25px;
                 }
               }
               .father {
@@ -720,9 +724,9 @@
                 font-weight: bold;
                 .img {
                   float: left;
-                  width: 18px;
+                  width: 16px;
                   height: 25px;
-                  margin: 6px 10px 0 20px;
+                  margin: 6px 12px 0 20px;
                 }
                 img {
                   float: right;
@@ -740,7 +744,7 @@
                 }
               }
               .children {
-                display: none;
+                /*display: none;*/
                 border-top: 1px solid #fbfbfb;
                 border-bottom: 1px solid #d3d4d4;
                 a {
