@@ -6,7 +6,7 @@ import Home from '@/components/Home'
 import Gene from '@/components/Gene'
 import GeneD from '@/components/GeneD'
 import OMIMD from '@/components/OMIMD'
-import Genotype from '@/components/Genotype'
+//import Genotype from '@/components/Genotype'
 import Product from '@/components/Product'
 import PanelC from '@/components/PanelC'
 import Variation from '@/components/Variation'
@@ -44,11 +44,11 @@ export default new Router({
       name: 'oMIMD',
       component: OMIMD
     },
-    {
-      path: '/genotype',
-      name: 'genotype',
-      component: Genotype
-    },
+//    {
+//      path: '/genotype',
+//      name: 'genotype',
+//      component: Genotype
+//    },
     {
       path: '/variation',
       name: 'variation',

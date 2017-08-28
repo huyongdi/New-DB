@@ -29,13 +29,13 @@
       </div>
 
       <div class="row topRow">
-        <div class="col-md-4">
-          <img src="../../static/img/home-5.png" alt="">
-          <div class="right">
-            <div class="right-title">表型分析</div>
-            <div class="remark">对表型的分类、管理、注释、检索等</div>
-          </div>
-        </div>
+        <!--<div class="col-md-4">-->
+          <!--<img src="../../static/img/home-5.png" alt="">-->
+          <!--<div class="right">-->
+            <!--<div class="right-title">表型分析</div>-->
+            <!--<div class="remark">对表型的分类、管理、注释、检索等</div>-->
+          <!--</div>-->
+        <!--</div>-->
         <div class="col-md-4">
           <img src="../../static/img/home-4.png" alt="">
           <div class="right">

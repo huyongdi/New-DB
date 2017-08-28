@@ -27,13 +27,13 @@
               <i class="triangle"></i>
             </div>
           </li>
-          <li @click="toPage('/genotype')">
-            <div class="father">
-              <span class="img task-genotype"></span>
-              <span>表型分析</span>
-              <i class="triangle"></i>
-            </div>
-          </li>
+          <!--<li @click="toPage('/genotype')">-->
+            <!--<div class="father">-->
+              <!--<span class="img task-genotype"></span>-->
+              <!--<span>表型分析</span>-->
+              <!--<i class="triangle"></i>-->
+            <!--</div>-->
+          <!--</li>-->
           <li @click="toHpo" data-name="hpo">
             <div class="father">
               <span class="img task-hpo"></span>
@@ -73,14 +73,6 @@
     '<div class="bounce1"></div>' +
     '<div class="bounce2"></div>' +
     '<div class="bounce3"></div> ' +
-    '</div>'
-  });
-  Vue.component('search-div', {
-    template: '<div class="search-div"> ' +
-    '<input type="text" placeholder="搜索基因" class="search-input">' +
-    '<span class="my-btn">' +
-    '<img src="../../static/img/red-con.png" alt="">' +
-    '</span> ' +
     '</div>'
   });
 
@@ -730,7 +722,7 @@
                 }
                 img {
                   float: right;
-                  margin: 16px 20px 0 0;
+                  margin: 16px 15px 0 0;
                 }
                 .triangle {
                   float: right;
